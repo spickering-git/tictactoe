@@ -1,7 +1,7 @@
 {
   "name": "tictactoe-slack",
   "description": "Uses Starbot as base to build tictactoe",
-  "repository": "",
+  "repository": "https://github.com/spickering-git/tictactoe-slack",
   "logo": "",
   "success_url": "/",
   "env": {
