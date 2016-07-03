@@ -36,7 +36,7 @@ PORT=3000
 ```shell
 $ npm start
 
-🚀 Starbot LIVES on PORT 3000 🚀
+tictactoe LIVES on PORT 3000
 ```
 
 Visit [localhost:3000](http://localhost:3000).
