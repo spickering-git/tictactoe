@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => { res.send('\n 👋 🌍 \n') })
 
-app.post('/commands/starbot', (req, res) => {
+app.post('/commands/tictactoe', (req, res) => {
   let payload = req.body
 
   if (!payload || payload.token !== config('TICTACTOE_COMMAND_TOKEN')) {
