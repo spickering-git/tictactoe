@@ -10,10 +10,10 @@
   },
   "author": {
     "email": "spickering@outlook.com",
-    "name": "Steve Pickering",
+    "name": "Steve Pickering"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/spickering-git"
   },
   "dependencies": {
     "body-parser": "^1.15.0",
