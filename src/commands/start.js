@@ -3,7 +3,7 @@
 
 const _ = require('lodash')
 const config = require('../config')
-const game = require('../Game')
+const game = require('../game')
 
 const msgDefaults = {
   response_type: 'in_channel',
