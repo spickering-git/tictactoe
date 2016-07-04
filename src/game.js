@@ -69,6 +69,8 @@ function drawCurrentBoard(currentGame){
 			boardDrawn += board[i][j];
 		}
 	}
+
+	return boardDrawn;
 }
 
 module.exports.game = game;
