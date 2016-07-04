@@ -40,8 +40,8 @@ const handler = (gameList, payload, res) => {
           title: 'TicTacToe',
           color: '#2FA44F',
           text: 'New game in ' + payload.channel_name + ' channel.',
-          //'\n' + gameList[payload.channel_id].username1 + ' vs. ' +
-          //gameList[payload.channel_id].username2,
+          '\n' + gameList[payload.channel_id].username1 + ' vs. ' +
+          gameList[payload.channel_id].username2,
           mrkdwn_in: ['text']
         }
       ]
