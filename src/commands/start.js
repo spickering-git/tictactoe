@@ -33,7 +33,7 @@ const handler = (gameList, payload, res) => {
     {
         let opponent = 'test2';
 
-      gameList[payload.channel_id] = new game.Game(payload.user_name, opponent);
+      gameList[payload.channel_id] = new game.game(payload.user_name, opponent);
 
         var currentGame = gameList[payload.channel_id];
 

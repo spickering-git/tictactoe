@@ -1,4 +1,4 @@
-function Game(username1, username2){
+function game(username1, username2){
 	this.username1 = username1;
 	this.username2 = username2;
 	this.currentUser = username1;
