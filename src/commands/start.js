@@ -35,15 +35,15 @@ const handler = (gameList, payload, res) => {
 
       gameList[payload.channel_id] = game.game(payload.user_name, opponent)
 
-        currentGame = gameList[payload.channel_id]
+        var currentGame = gameList[payload.channel_id]
 
       attachments = [
         {
           title: 'TicTacToe',
           color: '#2FA44F',
           text: 'New game in ' + payload.channel_name + ' channel.' ,
-          //'\n' + currentGame.username1 + ' vs. ' +
-          //currentGame.username2,
+          '\n' + currentGame.username1 + ' vs. ' +
+          currentGame.username2,
           mrkdwn_in: ['text']
         }
       ]
