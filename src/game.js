@@ -70,7 +70,7 @@ function drawCurrentBoard(currentGame){
 		}
 	}
 
-	return boardDrawn;
+	return currentGame.currentUser;
 }
 
 module.exports.game = game;
