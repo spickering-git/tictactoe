@@ -3,6 +3,7 @@
 
 const _ = require('lodash')
 const config = require('../config')
+const game = require('../Game')
 
 const msgDefaults = {
   response_type: 'in_channel',
@@ -22,7 +23,7 @@ const handler = (gameList, payload, res) => {
         {
           title: 'TicTacToe',
           color: '#2FA44F',
-          text: payload.channel_name + '` already has an active game`' +
+          text: payload.channel_name + ' channel `already has an active game`' +
           '\n A channel can have at most one game being played at a time.',
           mrkdwn_in: ['text']
         }
@@ -30,14 +31,17 @@ const handler = (gameList, payload, res) => {
     }
     else
     {
-      gameList[payload.channel_id] = 'test'
+        let opponent = 'test2'
+
+      gameList[payload.channel_id] = game.Game(payload.user_name, opponent)
 
       attachments = [
         {
           title: 'TicTacToe',
           color: '#2FA44F',
-          text: '`test`' +
-          '\n START',
+          text: 'New game in ' + payload.channel_name + ' channel.'
+          '\n' + gameList[payload.channel_id].username1 + ' vs. ' +
+          gameList[payload.channel_id].username2,
           mrkdwn_in: ['text']
         }
       ]
