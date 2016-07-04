@@ -46,7 +46,7 @@ const handler = (gameList, payload, res) => {
     }
     else
     {
-        let opponent = 'test2';
+        let opponent = tokens[1];
 
       gameList[payload.channel_id] = new game.game(payload.user_name, opponent);
 
@@ -58,7 +58,9 @@ const handler = (gameList, payload, res) => {
           color: '#2FA44F',
           text: 'New game in ' + payload.channel_name + ' channel.' +
           '\n' + currentGame.username1 + ' vs. ' +
-          currentGame.username2 + " " + payload.text
+          currentGame.username2 + " " + payload.text + " " +
+              payload.channel_id +
+              '\n' + game.drawCurrentBoard(currentGame)
         }
       ]
     }
