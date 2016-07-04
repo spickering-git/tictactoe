@@ -3,7 +3,6 @@
 
 const _ = require('lodash')
 const config = require('../config')
-const trending = require('github-trending')
 
 const msgDefaults = {
   response_type: 'in_channel',
@@ -16,7 +15,7 @@ const handler = (gameList, payload, res) => {
 
 
     var attachments;
-
+/*
     if (payload.channel_id in gameList)
     {
       attachments = [
@@ -42,7 +41,17 @@ const handler = (gameList, payload, res) => {
           mrkdwn_in: ['text']
         }
       ]
-    }
+    }*/
+
+    attachments = [
+        {
+            title: 'TicTacToe',
+            color: '#2FA44F',
+            text: '`payload.channel_name already has an active game`' +
+            '\n A channel can have at most one game being played at a time',
+            mrkdwn_in: ['text']
+        }
+    ]
 
     let msg = _.defaults({
       channel: payload.channel_name,
@@ -55,4 +64,4 @@ const handler = (gameList, payload, res) => {
 
 }
 
-module.exports = { pattern: /repos/ig, handler: handler }
+module.exports = { pattern: /start/ig, handler: handler }
