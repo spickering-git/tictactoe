@@ -9,7 +9,7 @@ const config = require('./config')
 const commands = require('./commands')
 const helpCommand = require('./commands/help')
 
-
+var gameList = {}; 
 
 let bot = require('./bot')
 
