@@ -19,11 +19,14 @@ const handler = (gameList, payload, res) => {
 
     if (payload.channel_id in gameList)
     {
+        let currentGame = gameList[payload.channel_id];
+
       attachments = [
         {
           title: 'TicTacToe',
           color: '#2FA44F',
-          text: '*Uh Oh!* ' + payload.channel_name + ' channel `already has an active game`' +
+          text: '*Uh Oh!* ' + payload.channel_name + ' channel already has an active game' +
+          ' between ' + currentGame.username1 + ' and ' + currentGame.username2 +
           '\n A channel can have at most one game being played at a time.',
           mrkdwn_in: ['text']
         }
