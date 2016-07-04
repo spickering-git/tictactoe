@@ -12,15 +12,12 @@ const msgDefaults = {
 
 let attachments = [
   {
-    title: 'Starbot will help you find the hippest repos on GitHub',
+    title: 'TicTacToe',
     color: '#2FA44F',
-    text: '`/starbot repos` returns hip repos \n`/starbot javascript` returns hip JavaScript repos',
-    mrkdwn_in: ['text']
-  },
-  {
-    title: 'Configuring Starbot',
-    color: '#E3E4E6',
-    text: '`/starbot help` ... you\'re lookin at it! \n',
+    text: '`/tictactoe start [username]` play tictactoe with username' +
+		'\n`/tictactoe status` returns current board and whose turn it is' +
+		'\n`/tictactoe play [row] [column]` specify your move row and column of the board' +
+		'\n`/tictactoe help`',
     mrkdwn_in: ['text']
   }
 ]

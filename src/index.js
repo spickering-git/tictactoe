@@ -28,7 +28,7 @@ app.post('/commands/tictactoe', (req, res) => {
   let payload = req.body
 
   if (!payload || payload.token !== config('TICTACTOE_COMMAND_TOKEN')) {
-    let err = '✋  Star—what? An invalid slash token was provided\n' +
+    let err = 'An invalid slash token was provided\n' +
               '   Is your Slack slash token correctly configured?'
     console.log(err)
     res.status(401).end(err)
