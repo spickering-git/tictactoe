@@ -12,7 +12,7 @@ const msgDefaults = {
 }
 
 const handler = (gameList, payload, res) => {
-  trending('javascript', (err, repos) => {
+
     if (err) throw err
 
     var attachments;
@@ -34,15 +34,6 @@ const handler = (gameList, payload, res) => {
       gameList[payload.channel_id] = 'test'
     }
 
-    var attachments = repos.slice(0, 5).map((repo) => {
-      return {
-        title: `${repo.owner}/${repo.title} `,
-        title_link: repo.url,
-        text: `_${repo.description}_\n${repo.language} • ${repo.star}>`,
-        mrkdwn_in: ['text', 'pretext']
-      }
-    })
-
     let msg = _.defaults({
       channel: payload.channel_name,
       attachments: attachments
@@ -51,7 +42,7 @@ const handler = (gameList, payload, res) => {
     res.set('content-type', 'application/json')
     res.status(200).json(msg)
     return
-  })
+  )
 }
 
 module.exports = { pattern: /repos/ig, handler: handler }
