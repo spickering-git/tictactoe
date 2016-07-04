@@ -13,7 +13,7 @@ const msgDefaults = {
 
 const handler = (gameList, payload, res) => {
 
-    var tokens = payload.split(" ");
+    var tokens = payload.text.split(" ");
 
     var attachments;
 
