@@ -7,11 +7,11 @@ const trending = require('github-trending')
 
 const msgDefaults = {
   response_type: 'in_channel',
-  username: 'Starbot',
+  username: 'TicTacToebot',
   icon_emoji: config('ICON_EMOJI')
 }
 
-const handler = (payload, res) => {
+const handler = (gameList, payload, res) => {
   trending('javascript', (err, repos) => {
     if (err) throw err
 

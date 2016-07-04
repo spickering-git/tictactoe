@@ -6,7 +6,7 @@ const config = require('../config')
 
 const msgDefaults = {
   response_type: 'in_channel',
-  username: 'Starbot',
+  username: 'TicTacToebot',
   icon_emoji: config('ICON_EMOJI')
 }
 
@@ -22,7 +22,7 @@ let attachments = [
   }
 ]
 
-const handler = (payload, res) => {
+const handler = (gameList, payload, res) => {
   let msg = _.defaults({
     channel: payload.channel_name,
     attachments: attachments
