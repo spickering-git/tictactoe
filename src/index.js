@@ -13,7 +13,7 @@ var gameList = {};
 
 let bot = require('./bot');
 
-let slack = require('./slack');
+let slack = require('./tttslackapi');
 
 let app = express();
 
