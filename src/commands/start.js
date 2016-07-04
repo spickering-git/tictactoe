@@ -15,15 +15,15 @@ const handler = (gameList, payload, res) => {
 
 
     var attachments;
-/*
+
     if (payload.channel_id in gameList)
     {
       attachments = [
         {
           title: 'TicTacToe',
           color: '#2FA44F',
-          text: '`payload.channel_name already has an active game`' +
-          '\n A channel can have at most one game being played at a time',
+          text: payload.channel_name + '` already has an active game`' +
+          '\n A channel can have at most one game being played at a time.',
           mrkdwn_in: ['text']
         }
       ]
@@ -36,22 +36,13 @@ const handler = (gameList, payload, res) => {
         {
           title: 'TicTacToe',
           color: '#2FA44F',
-          text: '`payload.channel_name already has an active game`' +
-          '\n A channel can have at most one game being played at a time',
+          text: '`test`' +
+          '\n start,
           mrkdwn_in: ['text']
         }
       ]
-    }*/
+    }
 
-    attachments = [
-        {
-            title: 'TicTacToe',
-            color: '#2FA44F',
-            text: '`payload.channel_name already has an active game`' +
-            '\n A channel can have at most one game being played at a time',
-            mrkdwn_in: ['text']
-        }
-    ]
 
     let msg = _.defaults({
       channel: payload.channel_name,
