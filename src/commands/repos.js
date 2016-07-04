@@ -11,6 +11,8 @@ const msgDefaults = {
   icon_emoji: config('ICON_EMOJI')
 }
 
+const 
+
 const handler = (payload, res) => {
   trending('javascript', (err, repos) => {
     if (err) throw err

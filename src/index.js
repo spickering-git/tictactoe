@@ -9,6 +9,8 @@ const config = require('./config')
 const commands = require('./commands')
 const helpCommand = require('./commands/help')
 
+var gameInfo = {};
+
 let bot = require('./bot')
 
 let app = express()
