@@ -1,9 +1,9 @@
 
 'use strict'
 
-const _ = require('lodash')
-const config = require('../config')
-const game = require('../game')
+const _ = require('lodash');
+const config = require('../config');
+const game = require('../game');
 
 const msgDefaults = {
   response_type: 'in_channel',
@@ -31,11 +31,11 @@ const handler = (gameList, payload, res) => {
     }
     else
     {
-        let opponent = 'test2'
+        let opponent = 'test2';
 
-      gameList[payload.channel_id] = game.game(payload.user_name, opponent)
+      gameList[payload.channel_id] = new game.Game(payload.user_name, opponent);
 
-        var currentGame = gameList[payload.channel_id]
+        var currentGame = gameList[payload.channel_id];
 
       attachments = [
         {

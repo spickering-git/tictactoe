@@ -1,4 +1,4 @@
-function game(username1, username2){
+function Game(username1, username2){
 	this.username1 = username1;
 	this.username2 = username2;
 	this.currentUser = username1;
@@ -16,6 +16,8 @@ function game(username1, username2){
 	}
 	
 	this.board = board;
+	
+	return this;
 }
 
-exports.game = game;
+module.exports.game = game;
