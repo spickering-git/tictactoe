@@ -41,12 +41,7 @@ app.post('/commands/tictactoe', (req, res) => {
     return payload.text.match(cmd.pattern) ? cmd : a
   }, helpCommand)
 
-  //if (payload.channel_id in gameList)
-  //{
-  //  return
-  //}
-
-
+  
   cmd.handler(gameList, payload, res)
 })
 

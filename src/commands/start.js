@@ -15,6 +15,25 @@ const handler = (gameList, payload, res) => {
   trending('javascript', (err, repos) => {
     if (err) throw err
 
+    var attachments;
+
+    if (payload.channel_id in gameList)
+    {
+      attachments = [
+        {
+          title: 'TicTacToe',
+          color: '#2FA44F',
+          text: '`payload.channel_name already has an active game`' +
+          '\n A channel can have at most one game being played at a time',
+          mrkdwn_in: ['text']
+        }
+      ]
+    }
+    else
+    {
+      gameList[payload.channel_id] = 'test'
+    }
+
     var attachments = repos.slice(0, 5).map((repo) => {
       return {
         title: `${repo.owner}/${repo.title} `,
