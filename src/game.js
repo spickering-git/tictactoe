@@ -44,7 +44,7 @@ this function will draw the board
 it handles a flexible board size
  */
 function drawCurrentBoard(currentGame){
-	var boardDrawn;
+	var boardDrawn = '';
 
 	var board = currentGame;
 	for(var i = 0; i < board.length; i++)
