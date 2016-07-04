@@ -37,7 +37,7 @@ const handler = (gameList, payload, res) => {
           title: 'TicTacToe',
           color: '#2FA44F',
           text: '`test`' +
-          '\n start,
+          '\n START',
           mrkdwn_in: ['text']
         }
       ]
