@@ -23,7 +23,7 @@ const handler = (gameList, payload, res) => {
         {
           title: 'TicTacToe',
           color: '#2FA44F',
-          text: '`Uh Oh!` ' + payload.channel_name + ' channel `already has an active game`' +
+          text: '*Uh Oh!* ' + payload.channel_name + ' channel `already has an active game`' +
           '\n A channel can have at most one game being played at a time.',
           mrkdwn_in: ['text']
         }
@@ -35,7 +35,7 @@ const handler = (gameList, payload, res) => {
             {
                 title: 'TicTacToe',
                 color: '#2FA44F',
-                text: '`Uh Oh!` ' +
+                text: '*Uh Oh!* ' +
                 'you forgot to include the username of your opponent',
                 mrkdwn_in: ['text']
             }
@@ -55,8 +55,7 @@ const handler = (gameList, payload, res) => {
           color: '#2FA44F',
           text: 'New game in ' + payload.channel_name + ' channel.' +
           '\n' + currentGame.username1 + ' vs. ' +
-          currentGame.username2 + " " + payload.text,
-          mrkdwn_in: ['text']
+          currentGame.username2 + " " + payload.text
         }
       ]
     }
