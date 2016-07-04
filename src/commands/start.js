@@ -13,7 +13,7 @@ const msgDefaults = {
 
 const handler = (gameList, payload, res) => {
 
-
+    var tokens = payload.split(" ");
 
     var attachments;
 
@@ -23,11 +23,23 @@ const handler = (gameList, payload, res) => {
         {
           title: 'TicTacToe',
           color: '#2FA44F',
-          text: payload.channel_name + ' channel `already has an active game`' +
+          text: '`Uh Oh!` ' + payload.channel_name + ' channel `already has an active game`' +
           '\n A channel can have at most one game being played at a time.',
           mrkdwn_in: ['text']
         }
       ]
+    }
+    else if(tokens.length < 2)
+    {
+        attachments = [
+            {
+                title: 'TicTacToe',
+                color: '#2FA44F',
+                text: '`Uh Oh!` ' +
+                'you forgot to include the username of your opponent',
+                mrkdwn_in: ['text']
+            }
+        ]
     }
     else
     {
@@ -35,7 +47,7 @@ const handler = (gameList, payload, res) => {
 
       gameList[payload.channel_id] = new game.game(payload.user_name, opponent);
 
-        var currentGame = gameList[payload.channel_id];
+        let currentGame = gameList[payload.channel_id];
 
       attachments = [
         {
