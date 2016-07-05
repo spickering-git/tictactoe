@@ -301,7 +301,7 @@ function columnWinner(currentGame){
 
 	while(colCnt < currentGame.boardSize)
 	{
-		var rowCnt = 1;
+		var rowCnt = 0;
 
 		var colTotal = 0;
 
