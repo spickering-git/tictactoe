@@ -13,11 +13,15 @@ const msgDefaults = {
 
 const handler = (gameList, payload, res) => {
 
-    if (payload.channel_id in gameList)
-    {
-        attachmentsText = 'Quitting current game in this channel'
+    var attachmentsText = '';
+
+    if (payload.channel_id in gameList) {
+        attachmentsText = 'Quitting current game in this channel';
 
         delete gameList[payload.channel_id];
+    }
+    else {
+        attachmentsText = 'There isn\'t an active game to quit in this channel';
     }
 
     var attachments = [
