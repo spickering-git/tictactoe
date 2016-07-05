@@ -46,7 +46,7 @@ it handles a flexible board size
 function drawCurrentBoard(currentGame){
 	var boardDrawn = '';
 
-	var board = currentGame;
+	var board = currentGame.board;
 	for(var i = 0; i < board.length; i++)
 	{
 		if(i>0)
@@ -70,7 +70,7 @@ function drawCurrentBoard(currentGame){
 		}
 	}
 
-	return currentGame.currentUser;
+	return boardDrawn;
 }
 
 module.exports.game = game;
