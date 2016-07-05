@@ -328,6 +328,8 @@ function diagonalDownWinner(currentGame){
 
 	while(daigonalCnt < currentGame.boardSize)
 	{
+		console.log(board[daigonalCnt][daigonalCnt]);
+		
 		if(firstCell != board[daigonalCnt][daigonalCnt]){
 			break;
 		}
