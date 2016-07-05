@@ -164,15 +164,15 @@ function checkForWinnerOrTie(currentGame){
 
 	//if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
 		rowWinner(currentGame);
-	}
+	//}
 
 	//if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
 		columnWinner(currentGame);
-	}
+	//}
 
 	//if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
 		diagonalDownWinner(currentGame);
-	}
+	//}
 
 	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
 		diagonalUpWinner(currentGame);
