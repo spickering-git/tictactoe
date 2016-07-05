@@ -36,7 +36,7 @@ const handler = (gameList, payload, res) => {
                     delete gameList[payload.channel_id];
                 }
             }
-        }
+        
         else {
             let currentGame = gameList[payload.channel_id];
 
