@@ -25,7 +25,7 @@ const handler = (gameList, payload, res) => {
         {
           title: 'TicTacToe',
           color: '#2FA44F',
-          text: 'It is ' + currentGame.currentUser + '\'s turn in the game '
+          text: 'It is ' + currentGame.currentUser + '\'s turn in the game ' +
           'between ' + currentGame.username1 + ' and ' + currentGame.username2 +
           game.drawCurrentBoard(currentGame),
           mrkdwn_in: ['text']
