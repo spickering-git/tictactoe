@@ -37,7 +37,7 @@ const handler = (gameList, payload, res) => {
         gameList[payload.channel_id] = new game.game(payload.user_name, opponent);
 
         let currentGame = gameList[payload.channel_id];
-
+        
         attachmentsText = game.getCurrentStatus(currentGame);
     }
 
