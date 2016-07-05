@@ -18,7 +18,7 @@ function game(username1, username2){
 
 		for(var j = 0; j < boardSize; j++)
 		{
-			board[i][j] = ' ';
+			board[i][j] = '*';
 		}
 	}
 	
@@ -49,7 +49,7 @@ function drawCurrentBoard(currentGame){
 	var board = currentGame.board;
 	for(var i = 0; i < board.length; i++)
 	{
-		if(i>0)
+		/*if(i>0)
 		{
 			boardDrawn += '\n'
 
@@ -57,7 +57,7 @@ function drawCurrentBoard(currentGame){
 			{
 				boardDrawn += '-';
 			}
-		}
+		}*/
 
 		for(var j = 0; j < board[i].length; j++)
 		{
@@ -66,7 +66,12 @@ function drawCurrentBoard(currentGame){
 				boardDrawn += '|';
 			}
 
-			boardDrawn += board[i][j];
+			if(board[i][j] == '*'){
+				boardDrawn += '--';
+			}
+			else {
+				boardDrawn += board[i][j];
+			}
 		}
 	}
 
