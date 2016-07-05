@@ -142,7 +142,13 @@ function getCurrentStatus(currentGame){
 		drawCurrentBoard(currentGame);
 }
 
+function checkForWinner(currentGame){
+	
+}
 
+function quitGame(currentGame){
+
+}
 
 module.exports.game = game;
 module.exports.gameStatusTypes = gameStatusTypes;
