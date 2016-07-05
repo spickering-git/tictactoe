@@ -269,7 +269,12 @@ function rowWinner(currentGame){
 			colCnt++;
 		}
 
+		console.log(foundRow +" "+ firstCell);
+
 		if(foundRow){
+
+
+
 			if(firstCell == gameCellFillTypes.X){
 				currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
 			}
