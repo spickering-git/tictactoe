@@ -184,7 +184,7 @@ function checkForWinnerOrTie(currentGame){
 	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
 		columnWinner(currentGame);
 	}
-	/*
+
 	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
 		diagonalDownWinner(currentGame);
 	}
@@ -195,7 +195,7 @@ function checkForWinnerOrTie(currentGame){
 
 	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME){
 		checkForTie(currentGame);
-	}*/
+	}
 	
 	return returnTextForGameWinOrTieStatus(currentGame);
 }
@@ -312,14 +312,14 @@ function columnWinner(currentGame){
 			rowCnt++;
 		}
 
-			if(colTotal == currentGame.boardSize){
-				currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
-				break;
-			}
-			else if(colTotal == -currentGame.boardSize){
-				currentGame.gameStatusTypes = gameStatusTypes.PLAYER2_WINNER;
-				break;
-			}
+		if(colTotal == currentGame.boardSize){
+			currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
+			break;
+		}
+		else if(colTotal == -currentGame.boardSize){
+			currentGame.gameStatusTypes = gameStatusTypes.PLAYER2_WINNER;
+			break;
+		}
 
 		colCnt++;
 	}
@@ -329,28 +329,22 @@ function diagonalDownWinner(currentGame){
 
 	var board = currentGame.board;
 
-	var firstCell = board[0][0];
+	var daigonalCnt = 0;
 
-	var daigonalCnt = 1;
+	var diagTotal = 0;
 
 	while(daigonalCnt < currentGame.boardSize)
 	{
-		console.log(board[daigonalCnt][daigonalCnt]);
-		
-		if(firstCell != board[daigonalCnt][daigonalCnt]){
-			break;
-		}
+		diagTotal += board[daigonalCnt][daigonalCnt];
 
 		daigonalCnt++;
 	}
 
-	if(daigonalCnt == currentGame.boardSize){
-		if(firstCell == gameCellFillTypes.X){
-			currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
-		}
-		else if(firstCell == gameCellFillTypes.O){
-			currentGame.gameStatusTypes = gameStatusTypes.PLAYER2_WINNER;
-		}
+	if(diagTotal == currentGame.boardSize){
+		currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
+	}
+	else if(diagTotal == -currentGame.boardSize){
+		currentGame.gameStatusTypes = gameStatusTypes.PLAYER2_WINNER;
 	}
 }
 
@@ -358,28 +352,24 @@ function diagonalUpWinner(currentGame){
 
 	var board = currentGame.board;
 
-	var firstCell = board[currentGame.boardSize-1][0];
+	var diagTotal = 0;
 
-	var rowCnt = currentGame.boardSize-2;
-	var columnCnt = 1;
+	var rowCnt = currentGame.boardSize - 1;
+	var colCnt = 0;
 
-	while(columnCnt < currentGame.boardSize)
+	while(colCnt < currentGame.boardSize)
 	{
-		if(firstCell != board[rowCnt][columnCnt]){
-			break;
-		}
+		diagTotal += board[daigonalCnt][daigonalCnt];
 
 		rowCnt--;
-		columnCnt++;
+		colCnt++;
 	}
 
-	if(columnCnt == currentGame.boardSize){
-		if(firstCell == gameCellFillTypes.X){
-			currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
-		}
-		else if(firstCell == gameCellFillTypes.O){
-			currentGame.gameStatusTypes = gameStatusTypes.PLAYER2_WINNER;
-		}
+	if(diagTotal == currentGame.boardSize){
+		currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
+	}
+	else if(diagTotal == -currentGame.boardSize){
+		currentGame.gameStatusTypes = gameStatusTypes.PLAYER2_WINNER;
 	}
 }
 
