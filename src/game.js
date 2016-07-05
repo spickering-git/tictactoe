@@ -14,6 +14,8 @@ const gameCellFillTypes = {
 	EMPTY: '--'
 };
 
+
+
 /*
 * This function returns a new game object
 * params:
@@ -45,6 +47,8 @@ function game(username1, username2){
 
 	this.gameStatusTypes = gameStatusTypes.ACTIVE_GAME;
 
+	this.finished = false;
+	
 	return this;
 }
 
@@ -93,10 +97,10 @@ function mark(payload, currentGame, rowIn, columnIn){
 		if(row < 0 && row >= currentGame.boardSize
 			&& col < 0 && col >= currentGame.boardSize)
 		{
-			return 'Row and column must be within the board size';
+			return 'Row and column must be within the board size' + drawCurrentBoard(currentGame);
 		}
 		else if (currentGame.board[row][col] != gameCellFillTypes.EMPTY) {
-			return 'Board space must be empty';
+			return 'Board space must be empty' + drawCurrentBoard(currentGame);
 		}
 		else {
 			if(currentGame.currentUser == payload.user_name){
@@ -111,18 +115,20 @@ function mark(payload, currentGame, rowIn, columnIn){
 					currentGame.currentUser = currentGame.username1;
 				}
 
-				return getCurrentStatus(currentGame);
+				return getCurrentStatus(currentGame) + checkForWinnerOrTie(currentGame);
 			}
 			else {
 				if(currentGame.username1 == payload.user_name ||
 					currentGame.username2 == payload.user_name){
 					if(currentGame.username1 == payload.user_name){
 						return 'Hey! wait your turn, it\'s time for ' + currentGame.username1 +
-								' to make a mark';
+							' to make a mark' +
+							drawCurrentBoard(currentGame);
 					}
 					else {
 						return 'Hey! wait your turn, it\'s time for ' + currentGame.username2 +
-							' to make a mark';
+							' to make a mark' +
+							drawCurrentBoard(currentGame);
 					}
 				}
 				else {
@@ -136,18 +142,227 @@ function mark(payload, currentGame, rowIn, columnIn){
 	}
 }
 
+/*
+returns the current status of the game and draws the board
+ */
 function getCurrentStatus(currentGame){
 	return 'It is ' + currentGame.currentUser + '\'s turn in the game ' +
 		'between ' + currentGame.username1 + ' (X) and ' + currentGame.username2 + ' (O) ' +
 		drawCurrentBoard(currentGame);
 }
 
-function checkForWinner(currentGame){
+/*
+checks for the winner by row, column, diagonal and checks for a tie
+ */
+function checkForWinnerOrTie(currentGame){
+
+	if(currentGame.gameStatusTypes = gameStatusTypes.ACTIVE_GAME) {
+		rowWinner(currentGame);
+	}
+
+	if(currentGame.gameStatusTypes = gameStatusTypes.ACTIVE_GAME) {
+		columnWinner(currentGame);
+	}
+
+	if(currentGame.gameStatusTypes = gameStatusTypes.ACTIVE_GAME) {
+		diagonalDownWinner(currentGame);
+	}
+
+	if(currentGame.gameStatusTypes = gameStatusTypes.ACTIVE_GAME) {
+		diagonalUpWinner(currentGame);
+	}
+
+	if(currentGame.gameStatusTypes = gameStatusTypes.ACTIVE_GAME){
+		checkForTie(currentGame);
+	}
 	
+	return returnTextForGameWinOrTieStatus(currentGame);
 }
 
-function quitGame(currentGame){
+function returnTextForGameWinOrTieStatus(currentGame){
+	var gameStatusText = '';
 
+	switch(currentGame.gameStatusTypes){
+		case gameStatusTypes.PLAYER1_WINNER:
+			currentGame.finished = true;
+			return '\nThis game has been won by ' + currentGame.username1;
+		case gameStatusTypes.PLAYER2_WINNER:
+			currentGame.finished = true;
+			return '\nThis game has been won by ' + currentGame.username2;
+		case gameStatusTypes.TIE:
+			currentGame.finished = true;
+			return '\nThis game is tied';
+		case gameStatusTypes.ACTIVE_GAME:
+			return '';
+	}
+
+}
+
+/*
+checks current board for a tie
+ */
+function checkForTie(currentGame){
+
+	var board = currentGame.board;
+
+	var foundEmpty = false;
+
+	var  = 0;
+	while(rowCnt rowCnt < currentGame.boardSize; rowCnt++)
+	{
+		var colCnt = 0;
+
+		while(colCnt < currentGame.boardSize)
+		{
+			if(board[rowCnt][colCnt] == gameCellFillTypes.EMPTY){
+				foundEmpty = true;
+				break;
+			}
+
+			colCnt++;
+		}
+
+		if(foundEmpty)
+		{
+			break;
+		}
+
+		rowCnt++;
+	}
+
+	if(rowCnt == currentGame.boardSize && colCnt == currentGame.boardSize){
+		currentGame.gameStatusTypes = gameStatusTypes.TIE;
+	}
+
+}
+
+function rowWinner(currentGame){
+
+	var board = currentGame.board;
+
+	var rowCnt = 0;
+
+	while(rowCnt < currentGame.boardSize)
+	{
+		var firstCell = board[rowCnt][0];
+
+		var colCnt = 1;
+
+		while(colCnt < currentGame.boardSize)
+		{
+			if(firstCell != board[rowCnt][colCnt]){
+				break;
+			}
+
+			colCnt++;
+		}
+
+		if(colCnt == currentGame.boardSize){
+			if(firstCell == gameCellFillTypes.X){
+				currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
+			}
+			else if(firstCell == gameCellFillTypes.O){
+				currentGame.gameStatusTypes = gameStatusTypes.PLAYER2_WINNER;
+			}
+
+			break;
+		}
+
+		rowCnt++;
+	}
+}
+
+function columnWinner(currentGame){
+
+	var board = currentGame.board;
+
+	var colCnt = 0;
+
+	while(colCnt < currentGame.boardSize)
+	{
+		var firstCell = board[0][colCnt];
+
+		var rowCnt = 1;
+
+		while(rowCnt < currentGame.boardSize)
+		{
+			if(firstCell != board[rowCnt][colCnt]){
+				break;
+			}
+
+			rowCnt++;
+		}
+
+		if(rowCnt == currentGame.boardSize){
+			if(firstCell == gameCellFillTypes.X){
+				currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
+			}
+			else if(firstCell == gameCellFillTypes.O){
+				currentGame.gameStatusTypes = gameStatusTypes.PLAYER2_WINNER;
+			}
+
+			break;
+		}
+
+		colCnt++;
+
+	}
+}
+
+function diagonalDownWinner(currentGame){
+
+	var board = currentGame.board;
+
+	var firstCell = board[0][0];
+
+	var daigonalCnt = 1;
+
+	while(daigonalCnt < currentGame.boardSize)
+	{
+		if(firstCell != board[daigonalCnt][daigonalCnt]){
+			break;
+		}
+
+		daigonalCnt++;
+	}
+
+	if(daigonalCnt == currentGame.boardSize){
+		if(firstCell == gameCellFillTypes.X){
+			currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
+		}
+		else if(firstCell == gameCellFillTypes.O){
+			currentGame.gameStatusTypes = gameStatusTypes.PLAYER2_WINNER;
+		}
+	}
+}
+
+function diagonalUpWinner(currentGame){
+
+	var board = currentGame.board;
+
+	var firstCell = board[currentGame.boardSize-1][0];
+
+	var rowCnt = currentGame.boardSize-2;
+	var columnCnt = 1;
+
+	while(columnCnt < currentGame.boardSize)
+	{
+		if(firstCell != board[rowCnt][columnCnt]){
+			break;
+		}
+
+		rowCnt--;
+		columnCnt++;
+	}
+
+	if(columnCnt == currentGame.boardSize){
+		if(firstCell == gameCellFillTypes.X){
+			currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
+		}
+		else if(firstCell == gameCellFillTypes.O){
+			currentGame.gameStatusTypes = gameStatusTypes.PLAYER2_WINNER;
+		}
+	}
 }
 
 module.exports.game = game;
@@ -156,3 +371,4 @@ module.exports.gameCellFillTypes = gameCellFillTypes;
 module.exports.drawCurrentBoard = drawCurrentBoard;
 module.exports.mark = mark;
 module.exports.getCurrentStatus = getCurrentStatus;
+module.exports.returnTextForGameStatus = returnTextForGameStatus;

@@ -29,6 +29,10 @@ const handler = (gameList, payload, res) => {
             let column = tokens[2];
 
             attachmentsText = game.mark(payload, currentGame, row, column);
+
+            if(currentGame.finished){
+                delete gameList[payload.channel_id];
+            }
         }
     }
     else
