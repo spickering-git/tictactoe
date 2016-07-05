@@ -17,7 +17,8 @@ let attachments = [
     text: '`/tictactoe start [username]` play tictactoe with username' +
 		'\n`/tictactoe status` returns current board and whose turn it is' +
 		'\n`/tictactoe mark [row] [column]` mark an empty space row (1,2 or 3) and column (1,2 or 3) of the board' +
-		'\n`/tictactoe help`',
+        '\n`/tictactoe quit` quits the current game in the channel' +
+        '\n`/tictactoe help`',
     mrkdwn_in: ['text']
   }
 ]
