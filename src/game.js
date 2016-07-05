@@ -141,19 +141,14 @@ function mark(payload, currentGame, rowIn, columnIn){
 			else {
 				if(currentGame.username1 == payload.user_name ||
 					currentGame.username2 == payload.user_name){
-					if(currentGame.username1 == payload.user_name){
-						return 'Hey! wait your turn, it\'s time for ' + currentGame.username1 +
-							' to make a mark' +
+
+						return 'Hey! wait your turn, it\'s time for ' + currentGame.currentUser +
+							' to make a take a turn.' +
 							drawCurrentBoard(currentGame);
-					}
-					else {
-						return 'Hey! wait your turn, it\'s time for ' + currentGame.username2 +
-							' to make a mark' +
-							drawCurrentBoard(currentGame);
-					}
+
 				}
 				else {
-					return 'Sorry, you will need to wait for the current game to finish in this channel or try another channel';
+					return 'Sorry, you will need to wait for the current game to finish in this channel or try another channel.';
 				}
 			}
 		}
