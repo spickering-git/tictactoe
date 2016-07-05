@@ -186,11 +186,7 @@ function checkForWinnerOrTie(currentGame){
 	}
 
 	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
-		diagonalDownWinner(currentGame);
-	}
-
-	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
-		diagonalUpWinner(currentGame);
+		diagonalWinner(currentGame);
 	}
 
 	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME){
@@ -260,7 +256,7 @@ function rowWinner(currentGame){
 			function(total, num){return total + num},0
 		);
 
-		console.log(rowTotal);
+		console.log("rowTotal " +   rowTotal);
 
 
 		//while(colCnt < currentGame.boardSize)
@@ -314,50 +310,34 @@ function columnWinner(currentGame){
 	}
 }
 
-function diagonalDownWinner(currentGame){
+function diagonalWinner(currentGame){
 
 	var board = currentGame.board;
 
 	var daigonalCnt = 0;
+	var upDiagRow = currentGame.boardSize - 1;
+	var upDiagCol = 0;
 
 	var diagTotal = 0;
+	var upDiagTotal = 0;
 
 	while(daigonalCnt < currentGame.boardSize)
 	{
 		diagTotal += board[daigonalCnt][daigonalCnt];
 
+		upDiagTotal += board[upDiagRow][upDiagCol];
+
 		daigonalCnt++;
+
+		upDiagRow--;
+
+		upDiagCol++;
 	}
 
-	if(diagTotal == currentGame.boardSize){
+	if(diagTotal == currentGame.boardSize || upDiagTotal == currentGame.boardSize){
 		currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
 	}
-	else if(diagTotal == -currentGame.boardSize){
-		currentGame.gameStatusTypes = gameStatusTypes.PLAYER2_WINNER;
-	}
-}
-
-function diagonalUpWinner(currentGame){
-
-	var board = currentGame.board;
-
-	var diagTotal = 0;
-
-	var rowCnt = currentGame.boardSize - 1;
-	var colCnt = 0;
-
-	while(colCnt < currentGame.boardSize)
-	{
-		diagTotal += board[daigonalCnt][daigonalCnt];
-
-		rowCnt--;
-		colCnt++;
-	}
-
-	if(diagTotal == currentGame.boardSize){
-		currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
-	}
-	else if(diagTotal == -currentGame.boardSize){
+	else if(diagTotal == -currentGame.boardSize || upDiagCol == -currentGame.boardSize){
 		currentGame.gameStatusTypes = gameStatusTypes.PLAYER2_WINNER;
 	}
 }
