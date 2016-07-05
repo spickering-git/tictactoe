@@ -38,8 +38,7 @@ const handler = (gameList, payload, res) => {
 
         let currentGame = gameList[payload.channel_id];
 
-        attachmentsText = game.getCurrentStatus(currentGame) +
-              " " + payload.channel_id;
+        attachmentsText = game.getCurrentStatus(currentGame);
     }
 
     var attachments = [

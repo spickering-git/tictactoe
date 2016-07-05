@@ -115,7 +115,13 @@ function mark(payload, currentGame, rowIn, columnIn){
 					currentGame.currentUser = currentGame.username1;
 				}
 
-				return getCurrentStatus(currentGame) + checkForWinnerOrTie(currentGame);
+				if(currentGame.finished){
+					return drawCurrentBoard(currentGame) + checkForWinnerOrTie(currentGame);
+				}
+				else {
+					return getCurrentStatus(currentGame);
+				}
+
 			}
 			else {
 				if(currentGame.username1 == payload.user_name ||
@@ -193,9 +199,9 @@ function returnTextForGameWinOrTieStatus(currentGame){
 			currentGame.finished = true;
 			return '\nThis game is tied';
 		case gameStatusTypes.ACTIVE_GAME:
-			return;
+			return '';
 		default:
-			return;
+			return '';
 	}
 
 }
