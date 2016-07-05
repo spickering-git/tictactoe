@@ -48,19 +48,10 @@ function drawCurrentBoard(currentGame){
 
 	var board = currentGame.board;
 
-	boardDrawn += '*';
+	//boardDrawn += '*';
 	for(var i = 0; i < board.length; i++)
 	{
 		boardDrawn += '\n'
-		/*if(i>0)
-		{
-			boardDrawn += '\n'
-
-			for(var j = 0; j < board[i].length; j++)
-			{
-				boardDrawn += '-';
-			}
-		}*/
 
 		for(var j = 0; j < board[i].length; j++)
 		{
@@ -80,7 +71,7 @@ function drawCurrentBoard(currentGame){
 		
 	}
 	
-	boardDrawn += '*';
+	//boardDrawn += '*';
 	
 	return boardDrawn;
 }

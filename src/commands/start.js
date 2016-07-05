@@ -60,7 +60,7 @@ const handler = (gameList, payload, res) => {
           currentGame.username1 + ' vs. ' +
           currentGame.username2 + " " + payload.text + " " +
               payload.channel_id +
-              '\n' + game.drawCurrentBoard(currentGame),
+              game.drawCurrentBoard(currentGame),
             mrkdwn_in: ['text']
 
         }
