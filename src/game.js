@@ -280,7 +280,7 @@ function rowWinner(currentGame){
 			colCnt++;
 		}
 
-		if(rowTotal = currentGame.boardSize){
+		if(rowTotal == currentGame.boardSize){
 			currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
 			break;
 		}
