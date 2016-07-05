@@ -50,6 +50,10 @@ function game(username1, username2){
 
 	this.gameStatusTypes = gameStatusTypes.ACTIVE_GAME;
 
+	this.cellFilledCount = 0;
+
+	this.totalCellsCount = this.boardSize * this.boardSize;
+
 	this.finished = false;
 	
 	return this;
@@ -119,6 +123,10 @@ function mark(payload, currentGame, rowIn, columnIn){
 		}
 		else {
 			if(currentGame.currentUser == payload.user_name){
+
+				this.cellFilledCount++;
+
+
 				if(currentGame.currentUser == currentGame.username1){
 					currentGame.board[row][col] = gameCellFillTypes.X;
 
@@ -130,12 +138,9 @@ function mark(payload, currentGame, rowIn, columnIn){
 					currentGame.currentUser = currentGame.username1;
 				}
 
-				if(currentGame.finished){
-					return drawCurrentBoard(currentGame) + checkForWinnerOrTie(currentGame);
-				}
-				else {
-					return getCurrentStatus(currentGame) + checkForWinnerOrTie(currentGame);
-				}
+				return checkForWinnerOrTie(currentGame);
+				
+				
 
 			}
 			else {
@@ -197,21 +202,31 @@ function checkForWinnerOrTie(currentGame){
 
 function returnTextForGameWinOrTieStatus(currentGame){
 	//var gameStatusText = '';
-
+	
+	var statusString = '';
 	switch(currentGame.gameStatusTypes){
 		case gameStatusTypes.PLAYER1_WINNER:
 			currentGame.finished = true;
-			return '\nThis game has been won by ' + currentGame.username1;
+			statusString = '\nThis game has been won by ' + currentGame.username1;
+			break;
 		case gameStatusTypes.PLAYER2_WINNER:
 			currentGame.finished = true;
-			return '\nThis game has been won by ' + currentGame.username2;
+			statusString =  '\nThis game has been won by ' + currentGame.username2;
+			break;
 		case gameStatusTypes.TIE:
 			currentGame.finished = true;
-			return '\nThis game is tied';
+			statusString =  '\nThis game is tied';
+			break;
 		case gameStatusTypes.ACTIVE_GAME:
-			return '';
 		default:
-			return '';
+			break;
+	}
+
+	if(currentGame.finished){
+		return drawCurrentBoard(currentGame) + statusString;
+	}
+	else {
+		return getCurrentStatus(currentGame);
 	}
 
 }
@@ -223,38 +238,10 @@ checks current board for a tie
  */
 function checkForTie(currentGame){
 
-	var board = currentGame.board;
-
-	var foundEmpty = false;
-
-	var rowCnt = 0;
-
-	while(rowCnt < currentGame.boardSize)
-	{
-		var colCnt = 0;
-
-		while(colCnt < currentGame.boardSize)
-		{
-			if(board[rowCnt][colCnt] == gameCellFillTypes.EMPTY){
-				foundEmpty = true;
-				break;
-			}
-
-			colCnt++;
-		}
-
-		if(foundEmpty)
-		{
-			break;
-		}
-
-		rowCnt++;
-	}
-
-	if(rowCnt == currentGame.boardSize && colCnt == currentGame.boardSize){
+	if(currentGame.totalCellsCount == currentGame.cellFilledCount){
 		currentGame.gameStatusTypes = gameStatusTypes.TIE;
 	}
-
+	
 }
 
 function rowWinner(currentGame){
