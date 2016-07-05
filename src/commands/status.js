@@ -15,32 +15,27 @@ const handler = (gameList, payload, res) => {
 
     var tokens = payload.text.split(" ");
 
-    var attachments;
+    var attachmentsText;
 
     if (payload.channel_id in gameList)
     {
         let currentGame = gameList[payload.channel_id];
 
-      attachments = [
-        {
-          title: 'TicTacToe',
-          color: '#2FA44F',
-          text: game.getCurrentStatus(currentGame),
-          mrkdwn_in: ['text']
-        }
-      ]
+        attachmentsText = game.getCurrentStatus(currentGame);
     }
     else
     {
-      attachments = [
-        {
-          title: 'TicTacToe',
-          color: '#2FA44F',
-          text: 'There is not an active game in this channel. You should start one!'
-        }
-      ]
+        attachmentsText = 'There is not an active game in this channel. You should start one!';
     }
 
+    var attachments = [
+        {
+            title: 'TicTacToe',
+            color: '#2FA44F',
+            text: attachmentsText,
+            mrkdwn_in: ['text']
+        }
+    ]
 
     let msg = _.defaults({
       channel: payload.channel_name,

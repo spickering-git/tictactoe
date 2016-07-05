@@ -15,58 +15,42 @@ const handler = (gameList, payload, res) => {
 
     var tokens = payload.text.split(" ");
 
-    var attachments;
+    var attachmentsText = '';
 
     if (payload.channel_id in gameList)
     {
         let currentGame = gameList[payload.channel_id];
 
-      attachments = [
-        {
-          title: 'TicTacToe',
-          color: '#2FA44F',
-          text: '*Uh Oh!* ' + payload.channel_name + ' channel already has an active game' +
+        attachmentsText = '*Uh Oh!* ' + payload.channel_name + ' channel already has an active game' +
           ' between ' + currentGame.username1 + ' and ' + currentGame.username2 +
-          '\n A channel can have at most one game being played at a time.',
-          mrkdwn_in: ['text']
-        }
-      ]
+          '\n A channel can have at most one game being played at a time.',;
     }
     else if(tokens.length < 2)
     {
-        attachments = [
-            {
-                title: 'TicTacToe',
-                color: '#2FA44F',
-                text: '*Uh Oh!* ' +
-                'you forgot to include the username of your opponent',
-                mrkdwn_in: ['text']
-            }
-        ]
+        attachmentsText = '*Uh Oh!* ' +
+                'you forgot to include the username of your opponent';
     }
     else
     {
         let opponent = tokens[1];
 
-      gameList[payload.channel_id] = new game.game(payload.user_name, opponent);
+        gameList[payload.channel_id] = new game.game(payload.user_name, opponent);
 
         let currentGame = gameList[payload.channel_id];
 
-      attachments = [
+        attachmentsText = game.getCurrentStatus(currentGame) +
+              " " + payload.channel_id;
+    }
+
+    var attachments = [
         {
-          title: 'TicTacToe',
-          color: '#2FA44F',
-          text: 'New game in ' + payload.channel_name + ' channel. ' +
-          currentGame.username1 + ' vs. ' +
-          currentGame.username2 + " " + payload.text + " " +
-              payload.channel_id +
-              game.drawCurrentBoard(currentGame),
+            title: 'TicTacToe',
+            color: '#2FA44F',
+            text: attachmentsText,
             mrkdwn_in: ['text']
 
         }
-      ]
-    }
-
+    ]
 
     let msg = _.defaults({
       channel: payload.channel_name,
