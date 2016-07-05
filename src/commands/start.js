@@ -23,7 +23,7 @@ const handler = (gameList, payload, res) => {
 
         attachmentsText = '*Uh Oh!* ' + payload.channel_name + ' channel already has an active game' +
           ' between ' + currentGame.username1 + ' and ' + currentGame.username2 +
-          '\n A channel can have at most one game being played at a time.',;
+          '\n A channel can have at most one game being played at a time.';
     }
     else if(tokens.length < 2)
     {
