@@ -166,7 +166,7 @@ function checkForWinnerOrTie(currentGame){
 		rowWinner(currentGame);
 	}
 
-	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
+	/*if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
 		columnWinner(currentGame);
 	}
 
@@ -180,13 +180,13 @@ function checkForWinnerOrTie(currentGame){
 
 	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME){
 		checkForTie(currentGame);
-	}
+	}*/
 	
 	return returnTextForGameWinOrTieStatus(currentGame);
 }
 
 function returnTextForGameWinOrTieStatus(currentGame){
-	var gameStatusText = '';
+	//var gameStatusText = '';
 
 	switch(currentGame.gameStatusTypes){
 		case gameStatusTypes.PLAYER1_WINNER:
@@ -253,20 +253,23 @@ function rowWinner(currentGame){
 
 	while(rowCnt < currentGame.boardSize)
 	{
-		var firstCell = board[rowCnt][0];
+		var colCnt = 0;
 
-		var colCnt = 1;
+		var firstCell = board[rowCnt][colCnt];
+
+		var foundRow = true;
 
 		while(colCnt < currentGame.boardSize)
 		{
 			if(firstCell != board[rowCnt][colCnt]){
+				foundRow = false;
 				break;
 			}
 
 			colCnt++;
 		}
 
-		if(colCnt == currentGame.boardSize){
+		if(foundRow){
 			if(firstCell == gameCellFillTypes.X){
 				currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
 			}
