@@ -38,7 +38,7 @@ const handler = (gameList, payload, res) => {
         {
           title: 'TicTacToe',
           color: '#2FA44F',
-          text: 'There is not an active game. You should start one!'
+          text: 'There is not an active game in this channel. You should start one!'
         }
       ]
     }
