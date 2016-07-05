@@ -256,11 +256,18 @@ function rowWinner(currentGame){
 
 		var rowTotal = 0;
 
-		while(colCnt < currentGame.boardSize)
-		{
-			rowTotal += board[rowCnt][colCnt]
-			colCnt++;
-		}
+		rowTotal = board[rowCnt].reduce(
+			function(total, num){return total + num},0
+		);
+
+		console.log(rowTotal);
+
+
+		//while(colCnt < currentGame.boardSize)
+		//{
+		//	rowTotal += board[rowCnt][colCnt]
+		//	colCnt++;
+		//}
 
 		if(rowTotal == currentGame.boardSize){
 			currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
