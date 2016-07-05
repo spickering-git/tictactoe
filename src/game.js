@@ -9,13 +9,16 @@ const gameStatusTypes = {
 };
 
 const gameCellFillTypes = {
+	X: 1,
+	O: -1,
+	EMPTY: 0
+};
+
+const gameCellFillSymbols = {
 	X: 'X',
 	O: 'O',
 	EMPTY: '--'
 };
-
-
-
 /*
 * This function returns a new game object
 * params:
@@ -73,7 +76,19 @@ function drawCurrentBoard(currentGame){
 				boardDrawn += '|';
 			}
 
-			boardDrawn += board[i][j];
+			switch(board[i][j])
+			{
+				case gameCellFillTypes.EMPTY:
+					boardDrawn += gameCellFillSymbols.EMPTY;
+					break;
+				case gameCellFillTypes.X:
+					boardDrawn += gameCellFillSymbols.X;
+					break;
+				case gameCellFillTypes.O:
+					boardDrawn += gameCellFillSymbols.O;
+					break;
+			}
+			//boardDrawn += board[i][j];
 		}
 		
 	}
@@ -206,6 +221,8 @@ function returnTextForGameWinOrTieStatus(currentGame){
 
 }
 
+
+
 /*
 checks current board for a tie
  */
@@ -255,33 +272,20 @@ function rowWinner(currentGame){
 	{
 		var colCnt = 0;
 
-		var firstCell = board[rowCnt][colCnt];
-
-		var foundRow = true;
+		var rowTotal = 0;
 
 		while(colCnt < currentGame.boardSize)
 		{
-			if(firstCell != board[rowCnt][colCnt]){
-				foundRow = false;
-				break;
-			}
-
+			rowTotal += board[rowCnt][colCnt]
 			colCnt++;
 		}
 
-		console.log(foundRow +" "+ firstCell);
-
-		if(foundRow){
-
-
-
-			if(firstCell == gameCellFillTypes.X){
-				currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
-			}
-			else if(firstCell == gameCellFillTypes.O){
-				currentGame.gameStatusTypes = gameStatusTypes.PLAYER2_WINNER;
-			}
-
+		if(rowTotal = currentGame.boardSize){
+			currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
+			break;
+		}
+		else if(rowTotal == -currentGame.boardSize){
+			currentGame.gameStatusTypes = gameStatusTypes.PLAYER2_WINNER;
 			break;
 		}
 
