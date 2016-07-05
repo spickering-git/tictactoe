@@ -256,15 +256,6 @@ function rowWinner(currentGame){
 			function(total, num){return total + num},0
 		);
 
-		console.log("rowTotal " +   rowTotal);
-
-
-		//while(colCnt < currentGame.boardSize)
-		//{
-		//	rowTotal += board[rowCnt][colCnt]
-		//	colCnt++;
-		//}
-
 		if(rowTotal == currentGame.boardSize){
 			currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
 			break;
@@ -282,26 +273,23 @@ function columnWinner(currentGame){
 
 	var board = currentGame.board;
 
+	var sumColArray = board[0];
+
+	for(var rowCnt = 1; rowCnt < currentGame.boardSize; rowCnt++){
+		sumColArray = board[rowCnt].map(function(cellVal, idx){
+			return cellVal + sumColArray[idx];
+		});
+	}
+
 	var colCnt = 0;
 
 	while(colCnt < currentGame.boardSize)
 	{
-		var rowCnt = 0;
-
-		var colTotal = 0;
-
-		while(rowCnt < currentGame.boardSize)
-		{
-			colTotal += board[rowCnt][colCnt];
-
-			rowCnt++;
-		}
-
-		if(colTotal == currentGame.boardSize){
+		if(sumColArray[colCnt] == currentGame.boardSize){
 			currentGame.gameStatusTypes = gameStatusTypes.PLAYER1_WINNER;
 			break;
 		}
-		else if(colTotal == -currentGame.boardSize){
+		else if(sumColArray[colCnt] == -currentGame.boardSize){
 			currentGame.gameStatusTypes = gameStatusTypes.PLAYER2_WINNER;
 			break;
 		}
