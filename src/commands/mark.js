@@ -20,15 +20,15 @@ const handler = (gameList, payload, res) => {
     if (payload.channel_id in gameList)
     {
         if(tokens.length < 3){
+            attachmentsText = '*Uh Oh! you didn\'t enter a row and column';
+        }
+        else {
             let currentGame = gameList[payload.channel_id];
 
             let row = tokens[1];
             let column = tokens[2];
 
             attachmentsText = game.mark(payload, currentGame, row, column);
-        }
-        else {
-            attachmentsText = '*Uh Oh! you didn\'t enter a row and column';
         }
     }
     else
@@ -40,7 +40,7 @@ const handler = (gameList, payload, res) => {
         {
             title: 'TicTacToe',
             color: '#2FA44F',
-            text: attachmentsText + " " + payload.text,
+            text: attachmentsText + " " + payload.text ,
             mrkdwn_in: ['text']
 
         }
