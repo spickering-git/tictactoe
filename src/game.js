@@ -94,8 +94,8 @@ function mark(payload, currentGame, rowIn, columnIn){
 
 	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
 
-		if(row < 0 && row >= currentGame.boardSize
-			&& col < 0 && col >= currentGame.boardSize)
+		if(row < 0 || row >= currentGame.boardSize
+			|| col < 0 || col >= currentGame.boardSize)
 		{
 			return 'Row and column must be within the board size' + drawCurrentBoard(currentGame);
 		}
@@ -162,15 +162,15 @@ checks for the winner by row, column, diagonal and checks for a tie
  */
 function checkForWinnerOrTie(currentGame){
 
-	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
+	//if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
 		rowWinner(currentGame);
 	}
 
-	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
+	//if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
 		columnWinner(currentGame);
 	}
 
-	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
+	//if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
 		diagonalDownWinner(currentGame);
 	}
 
