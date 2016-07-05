@@ -148,4 +148,5 @@ module.exports.game = game;
 module.exports.gameStatusTypes = gameStatusTypes;
 module.exports.gameCellFillTypes = gameCellFillTypes;
 module.exports.drawCurrentBoard = drawCurrentBoard;
+module.exports.mark = mark;
 module.exports.getCurrentStatus = getCurrentStatus;
