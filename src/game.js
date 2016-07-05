@@ -119,7 +119,7 @@ function mark(payload, currentGame, rowIn, columnIn){
 					return drawCurrentBoard(currentGame) + checkForWinnerOrTie(currentGame);
 				}
 				else {
-					return getCurrentStatus(currentGame);
+					return getCurrentStatus(currentGame) + checkForWinnerOrTie(currentGame);
 				}
 
 			}
@@ -162,17 +162,17 @@ checks for the winner by row, column, diagonal and checks for a tie
  */
 function checkForWinnerOrTie(currentGame){
 
-	//if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
+	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
 		rowWinner(currentGame);
-	//}
+	}
 
-	//if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
+	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
 		columnWinner(currentGame);
-	//}
+	}
 
-	//if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
+	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
 		diagonalDownWinner(currentGame);
-	//}
+	}
 
 	if(currentGame.gameStatusTypes == gameStatusTypes.ACTIVE_GAME) {
 		diagonalUpWinner(currentGame);
