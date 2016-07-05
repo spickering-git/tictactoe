@@ -193,7 +193,9 @@ function returnTextForGameWinOrTieStatus(currentGame){
 			currentGame.finished = true;
 			return '\nThis game is tied';
 		case gameStatusTypes.ACTIVE_GAME:
-			return '';
+			return;
+		default:
+			return;
 	}
 
 }
@@ -372,4 +374,4 @@ module.exports.gameCellFillTypes = gameCellFillTypes;
 module.exports.drawCurrentBoard = drawCurrentBoard;
 module.exports.mark = mark;
 module.exports.getCurrentStatus = getCurrentStatus;
-module.exports.returnTextForGameStatus = returnTextForGameStatus;
+module.exports.checkForWinnerOrTie = checkForWinnerOrTie;
