@@ -207,8 +207,9 @@ function checkForTie(currentGame){
 
 	var foundEmpty = false;
 
-	var  = 0;
-	while(rowCnt rowCnt < currentGame.boardSize; rowCnt++)
+	var rowCnt = 0;
+	
+	while(rowCnt < currentGame.boardSize; rowCnt++)
 	{
 		var colCnt = 0;
 
