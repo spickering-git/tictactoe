@@ -26,8 +26,8 @@ const handler = (gameList, payload, res) => {
         if(tokens[1] == 'test')
             {
                 let currentGame = gameList[payload.channel_id];
-                currentGame.board[2][0] = X;
-                currentGame.board[2][1] = X;
+                currentGame.board[2][0] = game.gameCellFillTypes.X;
+                currentGame.board[2][1] = game.gameCellFillTypes.X;
                 //currentGame.board[2][2] = X;
 
                 attachmentsText = game.mark(payload, currentGame, 3, 3);
@@ -36,7 +36,7 @@ const handler = (gameList, payload, res) => {
                     delete gameList[payload.channel_id];
                 }
             }
-        
+
         else {
             let currentGame = gameList[payload.channel_id];
 
