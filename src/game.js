@@ -26,7 +26,7 @@ function game(username1, username2){
 	this.username2 = username2;
 	this.currentUser = username1;
 
-	let boardSizeTemp = 3;
+	var boardSizeTemp = 3;
 
 	this.boardSize = boardSizeTemp;
 	var board = new Array(this.boardSize);
