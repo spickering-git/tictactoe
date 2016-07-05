@@ -18,7 +18,7 @@ function game(username1, username2){
 
 		for(var j = 0; j < boardSize; j++)
 		{
-			board[i][j] = '*';
+			board[i][j] = gameCellFillTypes.EMPTY;
 		}
 	}
 	
@@ -37,7 +37,13 @@ const gameStatus = {
 	PLAYER1_WINNER: 2,
 	PLAYER2_WINNER: 3,
 	TIE: 4
-}
+};
+
+const gameCellFillTypes = {
+	X: 'X',
+	O: 'O',
+	EMPTY: '--'
+};
 
 /*
 this function will draw the board
@@ -60,12 +66,12 @@ function drawCurrentBoard(currentGame){
 				boardDrawn += '|';
 			}
 
-			if(board[i][j] == '*'){
-				boardDrawn += '--';
-			}
-			else {
+			//if(board[i][j] == cellFillTypes.EMPTY){
+			//	boardDrawn += '--';
+			//}
+			//else {
 				boardDrawn += board[i][j];
-			}
+			//}
 		}
 
 		
@@ -78,4 +84,5 @@ function drawCurrentBoard(currentGame){
 
 module.exports.game = game;
 module.exports.gameStatus = gameStatus;
+module.exports.gameCellFillTypes = gameCellFillTypes;
 module.exports.drawCurrentBoard = drawCurrentBoard;
