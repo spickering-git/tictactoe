@@ -45,4 +45,4 @@ const handler = (gameList, payload, res) => {
 
 }
 
-module.exports = { pattern: /mark/ig, handler: handler }
+module.exports = { pattern: /quit/ig, handler: handler }
