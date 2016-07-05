@@ -26,15 +26,16 @@ function game(username1, username2){
 	this.username2 = username2;
 	this.currentUser = username1;
 
-	var boardSizeTemp = 3;
+	//var boardSizeTemp = 3;
 
-	this.boardSize = boardSizeTemp;
+	this.boardSize = 3;
+
 	var board = new Array(this.boardSize);
-	for(var i = 0; i < boardSize; i++)
+	for(var i = 0; i < this.boardSize; i++)
 	{
-		board[i] = new Array(boardSize);
+		board[i] = new Array(this.boardSize);
 
-		for(var j = 0; j < boardSize; j++)
+		for(var j = 0; j < this.boardSize; j++)
 		{
 			board[i][j] = gameCellFillTypes.EMPTY;
 		}
