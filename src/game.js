@@ -124,7 +124,7 @@ function mark(payload, currentGame, rowIn, columnIn){
 		else {
 			if(currentGame.currentUser == payload.user_name){
 
-				this.cellFilledCount++;
+				currentGame.cellFilledCount++;
 
 
 				if(currentGame.currentUser == currentGame.username1){
