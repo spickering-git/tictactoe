@@ -28,7 +28,7 @@ function checkForUser(payload, opponent){
 
             channelUsers = data.members;
 
-            console.log(channelUsers);
+            //console.log(channelUsers);
         });
 
         slack.users.list({
@@ -40,8 +40,12 @@ function checkForUser(payload, opponent){
 
             users = data.members;
 
-            console.log(users);
+            //console.log(users);
         });
+
+        for(int i = 0; i < users.length; i++){
+            console.log(users[i].user + " " + opponent);
+        }
     }
 }
 
