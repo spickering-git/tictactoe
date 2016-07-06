@@ -9,6 +9,8 @@ slack.api.test({hello:'world'}, console.log);
 //console.log(config('SLACK_API_TOKEN'));
 slack.auth.test({ token: config('SLACK_API_TOKEN')}, function(err,data){
     console.log(err);
+
+    console.log(data);
 });
 
 //slack.api("users.list", function(err, response) {
