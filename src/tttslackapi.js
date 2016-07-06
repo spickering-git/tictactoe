@@ -47,6 +47,7 @@ function checkSlackAPIauth(){
 
 function getTeamUserList(){
 
+
     var teamUsersList = {};
 
     if (checkSlackConnection) {
@@ -77,6 +78,8 @@ function getTeamUserList(){
 function checkForUser(payload, opponent, teamUsersList){
 
     var userFound = true;
+
+    console.log("TEST * " + checkSlackConnection);
 
     if (checkSlackConnection && teamUsersList != null) {
         if (teamUsersList[opponent] != null) {
