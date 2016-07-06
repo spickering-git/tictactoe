@@ -21,7 +21,7 @@ var teamUsersList = slackapi.getTeamUserList(checkSlackConnection);
 
 var globalTicTacToeObject = {};
 globalTicTacToeObject.gameList = {};
-globalTicTacToeObject.checkSlackConnection = checkSlackConnection);
+globalTicTacToeObject.checkSlackConnection = checkSlackConnection;
 console.log('##### ' + globalTicTacToeObject.checkSlackConnection);
 globalTicTacToeObject.teamUsersList = teamUsersList;
 
