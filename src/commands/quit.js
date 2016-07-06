@@ -16,7 +16,8 @@ const handler = (gameList, payload, res) => {
     var attachmentsText = '';
 
     if (payload.channel_id in gameList) {
-        attachmentsText = 'Quitting current game in this channel';
+        let currentGame = gameList[payload.channel_id];
+        attachmentsText = 'Quitting current game in this channel between ' + currentGame.username1 + ' and ' + currentGame.username2;
 
         delete gameList[payload.channel_id];
     }
