@@ -22,9 +22,9 @@ function checkSlackAPIauth(){
     }
     else {
         slack.auth.test({ token: config('SLACK_API_TOKEN')}, function(err,data){
-            console.log(err);
+            //console.log(err);
 
-            if (err){
+            if (err != null){
                 console.log("check 2");
                 return false;
             }
