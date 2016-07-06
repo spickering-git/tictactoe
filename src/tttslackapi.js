@@ -81,6 +81,8 @@ function checkForUser(payload, opponent, teamUsersList){
     if (checkSlackConnection && teamUsersList != null) {
         if (teamUsersList[opponent] != null) {
 
+            console.log(config('SLACK_API_TOKEN'))
+
                 slack.channels.info({
                     token: config('SLACK_API_TOKEN'),
                     channel: payload.channel_id
