@@ -34,7 +34,7 @@ function checkSlackAPIauth(){
         });
     }
     console.log("check 4");
-    return false;
+    //return false;
         
     
 }
