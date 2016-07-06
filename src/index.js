@@ -8,7 +8,7 @@ const _ = require('lodash');
 const config = require('./config');
 const commands = require('./commands');
 const helpCommand = require('./commands/help');
-const slackapi = require('../tttslackapi');
+const slackapi = require('./tttslackapi');
 
 let bot = require('./bot');
 
