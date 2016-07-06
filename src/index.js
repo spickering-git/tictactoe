@@ -8,12 +8,14 @@ const _ = require('lodash');
 const config = require('./config');
 const commands = require('./commands');
 const helpCommand = require('./commands/help');
-
-var gameList = {}; 
+const slackapi = require('../tttslackapi');
 
 let bot = require('./bot');
 
 let app = express();
+
+var gameList = {};
+var teamUsersList = slackapi.getTeamUserList();
 
 if (config('PROXY_URI')) {
   app.use(proxy(config('PROXY_URI'), {
@@ -42,7 +44,7 @@ app.post('/commands/tictactoe', (req, res) => {
   }, helpCommand)
 
   
-  cmd.handler(gameList, payload, res)
+  cmd.handler(teamUsersList, gameList, payload, res)
 })
 
 app.listen(config('PORT'), (err) => {

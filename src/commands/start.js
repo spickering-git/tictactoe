@@ -5,7 +5,7 @@ const _ = require('lodash');
 const config = require('../config');
 const game = require('../game');
 
-var slack = require('../tttslackapi');
+const slack = require('../tttslackapi');
 
 const msgDefaults = {
   response_type: 'in_channel',
@@ -13,7 +13,7 @@ const msgDefaults = {
   icon_emoji: config('ICON_EMOJI')
 }
 
-const handler = (gameList, payload, res) => {
+const handler = (teamUsersList, gameList, payload, res) => {
 
     var tokens = payload.text.split(" ");
 
@@ -36,13 +36,17 @@ const handler = (gameList, payload, res) => {
     {
         let opponent = tokens[1];
 
-        slack.checkForUser(payload, opponent);
+        if(slack.checkForUser(payload, opponent, teamUsersList)) {
 
-        gameList[payload.channel_id] = new game.game(payload.user_name, opponent);
+            gameList[payload.channel_id] = new game.game(payload.user_name, opponent);
 
-        let currentGame = gameList[payload.channel_id];
-        
-        attachmentsText = game.getCurrentStatus(currentGame);
+            let currentGame = gameList[payload.channel_id];
+
+            attachmentsText = game.getCurrentStatus(currentGame);
+        }
+        else {
+            attachmentsText = '*Uh Oh!* ' + payload.channel_name + ' channel does not include that user.';
+        }
     }
 
     var attachments = [

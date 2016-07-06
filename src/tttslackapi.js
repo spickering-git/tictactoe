@@ -5,32 +5,19 @@ const slack = require('slack')
 const config = require('./config')
 
 //slack = new Slack(config('SLACK_API_TOKEN'));
-slack.api.test({hello:'world'}, console.log);
+//slack.api.test({hello:'world'}, console.log);
 //console.log(config('SLACK_API_TOKEN'));
-slack.auth.test({ token: config('SLACK_API_TOKEN')}, function(err,data){
-    console.log(err);
+//slack.auth.test({ token: config('SLACK_API_TOKEN')}, function(err,data){
+//    console.log(err);
 
-    console.log(data);
-});
+//    console.log(data);
+//});
 
-function checkForUser(payload, opponent){
+function getTeamUserList(){
 
-    var channelUsers;
-    var users;
+    var teamUsersList = {};
+
     if (config('SLACK_API_TOKEN')) {
-        slack.channels.info({
-            token: config('SLACK_API_TOKEN'),
-            channel: payload.channel_id
-        }, function (err, data) {
-            //console.log(err);
-
-            //console.log(data);
-
-            channelUsers = data;
-            console.log('***********************');
-            console.log(channelUsers.channel.members);
-            console.log('***********************');
-        });
 
         slack.users.list({
             token: config('SLACK_API_TOKEN')
@@ -39,18 +26,56 @@ function checkForUser(payload, opponent){
 
             //console.log(data);
 
-            users = data;
-            console.log('!!!!!!!!!!!!!!!!!!!!!!!!');
-            console.log("users " + users.members[0].name);
-            console.log('!!!!!!!!!!!!!!!!!!!!!!!');
+            //data;
+            //console.log('!!!!!!!!!!!!!!!!!!!!!!!!');
+            for(var i = 0; i < data.members.length; i++){
+                console.log("users " + data.members[i].name +
+                    " " + data.members[i].id);
+
+                teamUsersList[data.members[i].name] = data.members[i].id;
+            }
+
+            //console.log('!!!!!!!!!!!!!!!!!!!!!!!');
         });
-
-
-
-        //for(var i = 0; i < users.members.length; i++){
-        //    console.log(users[i].user + " " + opponent);
-        //}
     }
+}
+
+function checkForUser(payload, opponent, teamUsersList){
+
+    if (config('SLACK_API_TOKEN') && teamUsersList != null) {
+        if (teamUsersList[opponent] != null) {
+
+                slack.channels.info({
+                    token: config('SLACK_API_TOKEN'),
+                    channel: payload.channel_id
+                }, function (err, data) {
+
+                    var indexVal = data.channel.members.indexOf(teamUsersList[opponent]);
+                    console.log('***********************');
+                    console.log(indexVal);
+                    console.log('***********************');
+
+                    if(indexVal >= 0){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+
+                });
+
+        }
+        else {
+            return false;
+        }
+    }
+    else {
+        return true;
+    }
+
+    var channelUsers;
+    var users;
+
 }
 
 
@@ -62,3 +87,4 @@ function checkForUser(payload, opponent){
 
 module.exports.slack = slack;
 module.exports.checkForUser = checkForUser;
+module.exports.getTeamUserList = getTeamUserList;

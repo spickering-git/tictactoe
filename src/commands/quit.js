@@ -11,7 +11,7 @@ const msgDefaults = {
   icon_emoji: config('ICON_EMOJI')
 }
 
-const handler = (gameList, payload, res) => {
+const handler = (teamUsersList, gameList, payload, res) => {
 
     var attachmentsText = '';
 
