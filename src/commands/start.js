@@ -5,7 +5,7 @@ const _ = require('lodash');
 const config = require('../config');
 const game = require('../game');
 
-var slack = require('./tttslackapi');
+var slack = require('../tttslackapi');
 
 const msgDefaults = {
   response_type: 'in_channel',
