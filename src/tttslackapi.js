@@ -133,3 +133,4 @@ function checkForUser(payload, opponent, globalTicTacToeObject){
 module.exports.slack = slack;
 module.exports.checkForUser = checkForUser;
 module.exports.getTeamUserList = getTeamUserList;
+module.exports.checkSlackAPIauth = checkSlackAPIauth;
