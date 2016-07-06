@@ -40,8 +40,8 @@ const handler = (gameList, payload, res) => {
         {
             let currentGame = gameList[payload.channel_id];
 
-            let row = tokens[1];
-            let column = tokens[2];
+            let row = parseInt(tokens[1]);
+            let column = parseInt(tokens[2]);
 
             attachmentsText = game.mark(payload, currentGame, row, column);
 

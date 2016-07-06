@@ -13,8 +13,44 @@ slack.auth.test({ token: config('SLACK_API_TOKEN')}, function(err,data){
     console.log(data);
 });
 
+function checkForUser(payload, opponent){
+
+    var channelUsers;
+    var users;
+    if (config('SLACK_API_TOKEN')) {
+        slack.channels.info({
+            token: config('SLACK_API_TOKEN'),
+            channel: payload.channel_id
+        }, function (err, data) {
+            //console.log(err);
+
+            //console.log(data);
+
+            channelUsers = data.members;
+
+            console.log(channelUsers);
+        });
+
+        slack.users.list({
+            token: config('SLACK_API_TOKEN')
+        }, function (err, data) {
+            //console.log(err);
+
+            //console.log(data);
+
+            users = data.members;
+
+            console.log(users);
+        });
+    }
+}
+
+
+//slack.channels.info({token, channel}, (err, data)
+
 //slack.api("users.list", function(err, response) {
 //    console.log(response);
 //});
 
 module.exports.slack = slack;
+module.exports.checkForUser = checkForUser;

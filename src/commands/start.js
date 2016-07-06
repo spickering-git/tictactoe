@@ -4,6 +4,7 @@
 const _ = require('lodash');
 const config = require('../config');
 const game = require('../game');
+const slack = require('./tttslackapi');
 
 const msgDefaults = {
   response_type: 'in_channel',
@@ -33,6 +34,8 @@ const handler = (gameList, payload, res) => {
     else
     {
         let opponent = tokens[1];
+
+        slack.checkForUser(payload, opponent);
 
         gameList[payload.channel_id] = new game.game(payload.user_name, opponent);
 

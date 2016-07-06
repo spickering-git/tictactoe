@@ -13,8 +13,6 @@ var gameList = {};
 
 let bot = require('./bot');
 
-let slack = require('./tttslackapi');
-
 let app = express();
 
 if (config('PROXY_URI')) {
