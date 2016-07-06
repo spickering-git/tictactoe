@@ -41,7 +41,7 @@ function checkForUser(payload, opponent){
 
             users = data;
             console.log('!!!!!!!!!!!!!!!!!!!!!!!!');
-            console.log("users " + users);
+            console.log("users " + users.ok);
             console.log('!!!!!!!!!!!!!!!!!!!!!!!');
         });
 
