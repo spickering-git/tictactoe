@@ -1,6 +1,10 @@
 
 'use strict'
 
+/*
+returns the status of the current game in the channel
+ */
+
 const _ = require('lodash');
 const config = require('../config');
 const game = require('../game');

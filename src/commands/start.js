@@ -1,6 +1,10 @@
 
 'use strict'
 
+/*
+starts a tictactoe game, must include an opponent parameter
+ */
+
 const _ = require('lodash');
 const config = require('../config');
 const game = require('../game');

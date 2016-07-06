@@ -1,6 +1,11 @@
 
 'use strict'
 
+/*
+this was originally set up to test the bot functionality while I was learning how to use slack
+It was just kept in as legacy code
+ */
+
 const slack = require('slack')
 const _ = require('lodash')
 const config = require('./config')

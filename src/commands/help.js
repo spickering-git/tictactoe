@@ -1,6 +1,10 @@
 
 'use strict'
 
+/*
+displays the basie list of commands and general help
+ */
+
 const _ = require('lodash')
 const config = require('../config')
 

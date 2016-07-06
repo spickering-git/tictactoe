@@ -1,6 +1,10 @@
 
 'use strict'
 
+/*
+quits the game whether you are in the game or not
+ */
+
 const _ = require('lodash');
 const config = require('../config');
 const game = require('../game');

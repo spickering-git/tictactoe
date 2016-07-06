@@ -1,6 +1,7 @@
 /*
- *the game status types
+contains the main game functions and objects for running and keeping track the tictactoe play
  */
+
 const gameStatusTypes = {
 	ACTIVE_GAME: 1,
 	PLAYER1_WINNER: 2,
@@ -103,8 +104,8 @@ function drawCurrentBoard(currentGame){
 }
 
 /*
- this function will draw the board
- it handles a flexible board size
+draws the board
+ it handles a flexible board size for future version
  */
 function mark(payload, currentGame, rowIn, columnIn){
 

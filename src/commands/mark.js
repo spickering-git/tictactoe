@@ -1,6 +1,10 @@
 
 'use strict'
 
+/*
+This puts the mark on the board by row and columen
+ */
+
 const _ = require('lodash');
 const config = require('../config');
 const game = require('../game');
@@ -25,20 +29,6 @@ const handler = (globalTicTacToeObject, payload, res) => {
             attachmentsText = '*Uh Oh! you didn\'t enter a row and column';
         }
         else
-        /*if(tokens[1] == 'test')
-            {
-                let currentGame = gameList[payload.channel_id];
-                currentGame.board[2][0] = game.gameCellFillTypes.X;
-                currentGame.board[2][1] = game.gameCellFillTypes.X;
-                //currentGame.board[2][2] = X;
-
-                attachmentsText = game.mark(payload, currentGame, 3, 3);
-
-                if(currentGame.finished){
-                    delete gameList[payload.channel_id];
-                }
-            }*/
-
         {
             let currentGame = gameList[payload.channel_id];
 

@@ -14,7 +14,7 @@ const config = {
   TICTACTOE_COMMAND_TOKEN: process.env.TICTACTOE_COMMAND_TOKEN,
   SLACK_TOKEN: process.env.SLACK_TOKEN,
   SLACK_API_TOKEN: process.env.SLACK_API_TOKEN,
-  ICON_EMOJI: ':stars:'
+  ICON_EMOJI: ':game_die:'
 }
 
 module.exports = (key) => {

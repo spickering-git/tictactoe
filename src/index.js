@@ -14,20 +14,13 @@ let bot = require('./bot');
 
 let app = express();
 
-
+//this makes the call to the slack authorization webapi to test the token
+//asych so done on startup
 slackapi.checkSlackAPIauth();
 
-//var gameList = {};
-
-//var checkSlackConnection = slackapi.checkSlackAPIauth();
-//var teamUsersList = slackapi.getTeamUserList(checkSlackConnection);
 
 var globalTicTacToeObject = {};
 globalTicTacToeObject.gameList = {};
-//globalTicTacToeObject.checkSlackConnection = slackapi.checkSlackConnection;
-//console.log('##### ' + globalTicTacToeObject.checkSlackConnection);
-//globalTicTacToeObject.teamUsersList = slackapi.teamUsersList;
-
 
 if (config('PROXY_URI')) {
   app.use(proxy(config('PROXY_URI'), {
