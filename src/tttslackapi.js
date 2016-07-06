@@ -56,9 +56,11 @@ function checkForUser(payload, opponent, teamUsersList){
                     console.log('***********************');
 
                     if(indexVal >= 0){
+                        console.log('TEST1');
                         return true;
                     }
                     else{
+                        console.log('TEST2');
                         return false;
                     }
 
@@ -66,15 +68,17 @@ function checkForUser(payload, opponent, teamUsersList){
 
         }
         else {
+            console.log('TEST3');
             return false;
         }
     }
     else {
+        console.log('TEST4');
         return true;
     }
 
-    var channelUsers;
-    var users;
+    //var channelUsers;
+    //var users;
 
 }
 
