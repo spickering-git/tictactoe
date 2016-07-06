@@ -13,6 +13,8 @@ const config = require('./config')
 //    console.log(data);
 //});
 
+var checkSlackConnection = checkSlackAPIauth();
+
 function checkSlackAPIauth(){
 
     if (config('SLACK_API_TOKEN')){
@@ -47,7 +49,7 @@ function getTeamUserList(){
 
     var teamUsersList = {};
 
-    if (checkSlackAPIauth()) {
+    if (checkSlackConnection) {
 
         slack.users.list({
             token: config('SLACK_API_TOKEN')
@@ -76,7 +78,7 @@ function checkForUser(payload, opponent, teamUsersList){
 
     var userFound = true;
 
-    if (checkSlackAPIauth() && teamUsersList != null) {
+    if (checkSlackConnection && teamUsersList != null) {
         if (teamUsersList[opponent] != null) {
 
                 slack.channels.info({
