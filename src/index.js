@@ -21,7 +21,7 @@ let app = express();
 
 var globalTicTacToeObject = {};
 globalTicTacToeObject.gameList = {};
-globalTicTacToeObject.checkSlackConnection = checkSlackAPIauth();
+globalTicTacToeObject.checkSlackConnection = slackapi.checkSlackAPIauth();
 globalTicTacToeObject.teamUsersList = slackapi.getTeamUserList(globalTicTacToeObject.checkSlackConnection);
 
 
