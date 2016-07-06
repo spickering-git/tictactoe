@@ -7,17 +7,39 @@ const config = require('./config')
 //slack = new Slack(config('SLACK_API_TOKEN'));
 //slack.api.test({hello:'world'}, console.log);
 //console.log(config('SLACK_API_TOKEN'));
-//slack.auth.test({ token: config('SLACK_API_TOKEN')}, function(err,data){
-//    console.log(err);
+slack.auth.test({ token: config('SLACK_API_TOKEN')}, function(err,data){
+    console.log(err);
 
-//    console.log(data);
-//});
+    console.log(data);
+});
+
+function checkSlackAPIauth(){
+
+    if (!config('SLACK_API_TOKEN')){
+        return false;
+    }
+    else {
+        slack.auth.test({ token: config('SLACK_API_TOKEN')}, function(err,data){
+            console.log(err);
+
+            if (err){
+                return false;
+            }
+
+            return true;
+        });
+    }
+
+    return false;
+        
+    
+}
 
 function getTeamUserList(){
 
     var teamUsersList = {};
 
-    if (config('SLACK_API_TOKEN')) {
+    if (checkSlackAPIauth()) {
 
         slack.users.list({
             token: config('SLACK_API_TOKEN')
@@ -46,7 +68,7 @@ function checkForUser(payload, opponent, teamUsersList){
 
     var userFound = true;
 
-    if (config('SLACK_API_TOKEN') && teamUsersList != null) {
+    if (checkSlackAPIauth() && teamUsersList != null) {
         if (teamUsersList[opponent] != null) {
 
                 slack.channels.info({
