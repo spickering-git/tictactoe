@@ -1,6 +1,6 @@
 {
   "name": "tictactoe-slack",
-  "description": "Uses Starbot as base to build tictactoe",
+  "description": "Tictactoe game to use with Slack slash command",
   "repository": "https://github.com/spickering-git/tictactoe-slack",
   "success_url": "/",
   "env": {
@@ -16,7 +16,7 @@
       "required": false
     },
 	"SLACK_API_TOKEN": {
-      "description": "Slack WEB API token",
+      "description": "Slack WEB API token, only works with TEST token from slack so far",
       "required": false
     },
     "NODE_ENV": "staging"

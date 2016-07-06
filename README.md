@@ -1,28 +1,23 @@
 # tictactoe
-X|O|X
-O|X|O
+X|O|X\n
+O|X|O\n
 X|O|X
 
-
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 ### Supported `/slash` commands
 
 Create a `/tictactoe` [custom slash command](https://api.slack.com/slash-commands), using the URL: `{app-name}.herokuapp.com/commands/tictactoe`. *Take note of the provided `token`, this is used to verify requests come from Slack.*
 
-- `/starbot` or `/starbot help` - List available commands
-- `/starbot repos` - Display trending GitHub projects
+- `/tictactoe` or `/tictactoe help` - displays commands
+- `/tictactoe start [opponent username]` - starts a game against an opponent
+- `/tictactoe status` - shows the status of the game
+- `/tictactoe mark [row] [column]` - enters the current users mark on the board
+- `/tictactoe quit` - quits the current game in the channel, any user in the channel can run this command
 
 ### Install
 
 ```shell
 $ npm install
-```
-
-### Copy `.env-example` to `.env`
-
-```shell
-$ cp .env-example .env
 ```
 
 ### Configure

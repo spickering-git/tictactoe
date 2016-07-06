@@ -45,7 +45,7 @@ function getTeamUserList(){
 function checkForUser(payload, opponent, teamUsersList){
 
     var userFound = true;
-    
+
     if (config('SLACK_API_TOKEN') && teamUsersList != null) {
         if (teamUsersList[opponent] != null) {
 
@@ -83,8 +83,6 @@ function checkForUser(payload, opponent, teamUsersList){
 
     return userFound;
 
-    //var channelUsers;
-    //var users;
 
 }
 

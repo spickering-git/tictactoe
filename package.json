@@ -1,6 +1,6 @@
 {
   "name": "tictactoe-slack",
-  "description": "Uses Starbot as base to build tictactoe",
+  "description": "Tictactoe game to use with Slack slash command",
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
@@ -26,8 +26,8 @@
     "slack": "^6.1.0"
   },
   "keywords": [
+    "tictactoe",
     "slack",
-    "slack-bot",
     "bot",
     "heroku"
   ],
