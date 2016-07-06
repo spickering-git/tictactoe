@@ -14,16 +14,19 @@ let bot = require('./bot');
 
 let app = express();
 
+
+slackapi.checkSlackAPIauth();
+
 //var gameList = {};
 
-var checkSlackConnection = slackapi.checkSlackAPIauth();
-var teamUsersList = slackapi.getTeamUserList(checkSlackConnection);
+//var checkSlackConnection = slackapi.checkSlackAPIauth();
+//var teamUsersList = slackapi.getTeamUserList(checkSlackConnection);
 
 var globalTicTacToeObject = {};
 globalTicTacToeObject.gameList = {};
-globalTicTacToeObject.checkSlackConnection = checkSlackConnection;
-console.log('##### ' + globalTicTacToeObject.checkSlackConnection);
-globalTicTacToeObject.teamUsersList = teamUsersList;
+//globalTicTacToeObject.checkSlackConnection = slackapi.checkSlackConnection;
+//console.log('##### ' + globalTicTacToeObject.checkSlackConnection);
+//globalTicTacToeObject.teamUsersList = slackapi.teamUsersList;
 
 
 if (config('PROXY_URI')) {

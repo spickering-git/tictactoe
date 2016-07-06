@@ -4,6 +4,9 @@
 const slack = require('slack')
 const config = require('./config')
 
+var teamUsersList = {};
+
+
 //slack = new Slack(config('SLACK_API_TOKEN'));
 //slack.api.test({hello:'world'}, console.log);
 //console.log(config('SLACK_API_TOKEN'));
@@ -27,16 +30,14 @@ function checkSlackAPIauth(){
 
             if (err != null){
                 console.log("check 2");
-                return false;
             }
-
-            console.log("check 3");
-            return true;
+            else {
+                getTeamUserList();
+            }
         });
     }
-    else{
+    else {
         console.log("check 4");
-        return false;
     }
 
     console.log("check 5");
@@ -45,12 +46,12 @@ function checkSlackAPIauth(){
     
 }
 
-function getTeamUserList(checkSlackConnection){
+function getTeamUserList(){
 
 
-    var teamUsersList = {};
+    //var teamUsersList = {};
 
-    if (checkSlackConnection) {
+    if (checkSlackConnection.authorized) {
 
         slack.users.list({
             token: config('SLACK_API_TOKEN')
@@ -75,14 +76,14 @@ function getTeamUserList(checkSlackConnection){
     return teamUsersList;
 }
 
-function checkForUser(payload, opponent, globalTicTacToeObject){
+function checkForUser(payload, opponent){
 
     var userFound = true;
 
-    console.log("TEST * " + globalTicTacToeObject.checkSlackConnection);
+    console.log("TEST * " + teamUsersList);
 
-    if (globalTicTacToeObject.checkSlackConnection && globalTicTacToeObject.teamUsersList != null) {
-        if (globalTicTacToeObject.teamUsersList[opponent] != null) {
+    if (teamUsersList != null) {
+        if (teamUsersList[opponent] != null) {
 
             console.log(config('SLACK_API_TOKEN'))
 
@@ -91,7 +92,7 @@ function checkForUser(payload, opponent, globalTicTacToeObject){
                     channel: payload.channel_id
                 }, function (err, data) {
 
-                    var indexVal = data.channel.members.indexOf(globalTicTacToeObject.teamUsersList[opponent]);
+                    var indexVal = data.channel.members.indexOf(teamUsersList[opponent]);
                     console.log('***********************');
                     console.log(indexVal);
                     console.log('***********************');
