@@ -13,7 +13,7 @@ const msgDefaults = {
 
 const handler = (globalTicTacToeObject, payload, res) => {
 
-    var gameLlist = globalTicTacToeObject.gameList;
+    var gameList = globalTicTacToeObject.gameList;
 
     var tokens = payload.text.split(" ");
 
