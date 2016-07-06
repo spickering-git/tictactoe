@@ -52,8 +52,8 @@ app.listen(config('PORT'), (err) => {
 
   console.log(`\n tictactoe LIVES on PORT ${config('PORT')}`)
 
-  if (config('SLACK_TOKEN')) {
-    console.log(`🤖  beep boop: @tictactoe_bot is real-time\n`)
-    bot.listen({ token: config('SLACK_TOKEN') })
-  }
+  //if (config('SLACK_TOKEN')) {
+  //  console.log(`@tictactoe_bot is real-time\n`)
+  //  bot.listen({ token: config('SLACK_TOKEN') })
+  //}
 })
