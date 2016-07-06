@@ -234,7 +234,7 @@ checks current board for a tie
  */
 function checkForTie(currentGame){
 
-	Console.log('currentGame.totalCellsCount ' + currentGame.totalCellsCount + ' currentGame.cellFilledCount ' + currentGame.cellFilledCount);
+	console.log('currentGame.totalCellsCount ' + currentGame.totalCellsCount + ' currentGame.cellFilledCount ' + currentGame.cellFilledCount);
 
 	if(currentGame.totalCellsCount == currentGame.cellFilledCount){
 		currentGame.gameStatusTypes = gameStatusTypes.TIE;
