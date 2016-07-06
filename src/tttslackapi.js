@@ -28,7 +28,7 @@ function checkForUser(payload, opponent){
 
             channelUsers = data;
             console.log('***********************');
-            console.log(channelUsers);
+            console.log(channelUsers.channel.members);
             console.log('***********************');
         });
 
@@ -41,7 +41,7 @@ function checkForUser(payload, opponent){
 
             users = data;
             console.log('!!!!!!!!!!!!!!!!!!!!!!!!');
-            console.log("users " + users.ok);
+            console.log("users " + users.members);
             console.log('!!!!!!!!!!!!!!!!!!!!!!!');
         });
 
