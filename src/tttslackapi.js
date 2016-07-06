@@ -38,6 +38,8 @@ function getTeamUserList(){
             //console.log('!!!!!!!!!!!!!!!!!!!!!!!');
         });
     }
+
+    return teamUsersList;
 }
 
 function checkForUser(payload, opponent, teamUsersList){
