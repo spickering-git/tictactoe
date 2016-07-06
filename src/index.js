@@ -16,14 +16,14 @@ let app = express();
 
 //var gameList = {};
 
-//var checkSlackConnection = checkSlackAPIauth();
-//var teamUsersList = slackapi.getTeamUserList();
+var checkSlackConnection = slackapi.checkSlackAPIauth();
+var teamUsersList = slackapi.getTeamUserList(checkSlackConnection);
 
 var globalTicTacToeObject = {};
 globalTicTacToeObject.gameList = {};
-globalTicTacToeObject.checkSlackConnection = slackapi.checkSlackAPIauth();
+globalTicTacToeObject.checkSlackConnection = checkSlackConnection);
 console.log('##### ' + globalTicTacToeObject.checkSlackConnection);
-globalTicTacToeObject.teamUsersList = slackapi.getTeamUserList(globalTicTacToeObject.checkSlackConnection);
+globalTicTacToeObject.teamUsersList = teamUsersList;
 
 
 if (config('PROXY_URI')) {
