@@ -6,8 +6,8 @@ const config = require('./config')
 
 //slack = new Slack(config('SLACK_API_TOKEN'));
 slack.api.test({hello:'world'}, console.log);
-console.log(config('SLACK_API_TOKEN'));
-slack.auth.test(config('SLACK_API_TOKEN'), function(err,data){
+//console.log(config('SLACK_API_TOKEN'));
+slack.auth.test({ token: config('SLACK_API_TOKEN')}, function(err,data){
     console.log(err);
 });
 
