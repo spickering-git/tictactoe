@@ -38,12 +38,12 @@ function checkForUser(payload, opponent){
 
             //console.log(data);
 
-            users = data.members;
+            users = data;
 
             //console.log(users);
         });
 
-        for(var i = 0; i < users.length; i++){
+        for(var i = 0; i < users.members.length; i++){
             console.log(users[i].user + " " + opponent);
         }
     }
