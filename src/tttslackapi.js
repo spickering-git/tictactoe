@@ -43,7 +43,7 @@ function checkForUser(payload, opponent){
             //console.log(users);
         });
 
-        for(int i = 0; i < users.length; i++){
+        for(var i = 0; i < users.length; i++){
             console.log(users[i].user + " " + opponent);
         }
     }
