@@ -44,6 +44,8 @@ function getTeamUserList(){
 
 function checkForUser(payload, opponent, teamUsersList){
 
+    var userFound = true;
+    
     if (config('SLACK_API_TOKEN') && teamUsersList != null) {
         if (teamUsersList[opponent] != null) {
 
@@ -59,11 +61,11 @@ function checkForUser(payload, opponent, teamUsersList){
 
                     if(indexVal >= 0){
                         console.log('TEST1');
-                        return true;
+                        userFound = true;
                     }
                     else{
                         console.log('TEST2');
-                        return false;
+                        userFound = false;
                     }
 
                 });
@@ -71,13 +73,15 @@ function checkForUser(payload, opponent, teamUsersList){
         }
         else {
             console.log('TEST3');
-            return false;
+            userFound = false;
         }
     }
     else {
         console.log('TEST4');
-        return true;
+        userFound = true;
     }
+
+    return userFound;
 
     //var channelUsers;
     //var users;
