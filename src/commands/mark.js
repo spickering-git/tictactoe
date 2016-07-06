@@ -11,7 +11,9 @@ const msgDefaults = {
   icon_emoji: config('ICON_EMOJI')
 }
 
-const handler = (teamUsersList, gameList, payload, res) => {
+const handler = (globalTicTacToeObject, payload, res) => {
+
+    var gameLlist = globalTicTacToeObject.gameList;
 
     var tokens = payload.text.split(" ");
 

@@ -14,8 +14,16 @@ let bot = require('./bot');
 
 let app = express();
 
-var gameList = {};
-var teamUsersList = slackapi.getTeamUserList();
+//var gameList = {};
+
+//var checkSlackConnection = checkSlackAPIauth();
+//var teamUsersList = slackapi.getTeamUserList();
+
+var globalTicTacToeObject = {};
+globalTicTacToeObject.gameList = {};
+globalTicTacToeObject.checkSlackConnection = checkSlackAPIauth();
+globalTicTacToeObject.teamUsersList = slackapi.getTeamUserList(globalTicTacToeObject.checkSlackConnection);
+
 
 if (config('PROXY_URI')) {
   app.use(proxy(config('PROXY_URI'), {
@@ -44,7 +52,7 @@ app.post('/commands/tictactoe', (req, res) => {
   }, helpCommand)
 
   
-  cmd.handler(teamUsersList, gameList, payload, res)
+  cmd.handler(globalTicTacToeObject, payload, res)
 })
 
 app.listen(config('PORT'), (err) => {

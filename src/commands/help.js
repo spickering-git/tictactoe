@@ -23,7 +23,7 @@ let attachments = [
   }
 ]
 
-const handler = (teamUsersList, gameList, payload, res) => {
+const handler = (globalTicTacToeObject, payload, res) => {
   let msg = _.defaults({
     channel: payload.channel_name,
     attachments: attachments

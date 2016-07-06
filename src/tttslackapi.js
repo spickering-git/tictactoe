@@ -13,7 +13,7 @@ const config = require('./config')
 //    console.log(data);
 //});
 
-var checkSlackConnection = checkSlackAPIauth();
+
 
 function checkSlackAPIauth(){
 
@@ -45,7 +45,7 @@ function checkSlackAPIauth(){
     
 }
 
-function getTeamUserList(){
+function getTeamUserList(checkSlackConnection){
 
 
     var teamUsersList = {};
@@ -75,14 +75,14 @@ function getTeamUserList(){
     return teamUsersList;
 }
 
-function checkForUser(payload, opponent, teamUsersList){
+function checkForUser(payload, opponent, globalTicTacToeObject){
 
     var userFound = true;
 
-    console.log("TEST * " + checkSlackConnection);
+    console.log("TEST * " + globalTicTacToeObject.checkSlackConnection);
 
-    if (checkSlackConnection && teamUsersList != null) {
-        if (teamUsersList[opponent] != null) {
+    if (globalTicTacToeObject.checkSlackConnection && globalTicTacToeObject.teamUsersList != null) {
+        if (globalTicTacToeObject.teamUsersList[opponent] != null) {
 
             console.log(config('SLACK_API_TOKEN'))
 
@@ -91,7 +91,7 @@ function checkForUser(payload, opponent, teamUsersList){
                     channel: payload.channel_id
                 }, function (err, data) {
 
-                    var indexVal = data.channel.members.indexOf(teamUsersList[opponent]);
+                    var indexVal = data.channel.members.indexOf(globalTicTacToeObject.teamUsersList[opponent]);
                     console.log('***********************');
                     console.log(indexVal);
                     console.log('***********************');

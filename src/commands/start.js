@@ -13,7 +13,9 @@ const msgDefaults = {
   icon_emoji: config('ICON_EMOJI')
 }
 
-const handler = (teamUsersList, gameList, payload, res) => {
+const handler = (globalTicTacToeObject, payload, res) => {
+
+    var gameList = globalTicTacToeObject.gameList;
 
     var tokens = payload.text.split(" ");
 
@@ -36,7 +38,7 @@ const handler = (teamUsersList, gameList, payload, res) => {
     {
         let opponent = tokens[1];
 
-        if(slack.checkForUser(payload, opponent, teamUsersList)) {
+        if(slack.checkForUser(payload, opponent, globalTicTacToeObject)) {
 
             gameList[payload.channel_id] = new game.game(payload.user_name, opponent);
 
