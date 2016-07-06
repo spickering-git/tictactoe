@@ -19,7 +19,9 @@ function checkSlackAPIauth(){
         console.log("check 1");
 
         slack.auth.test({ token: config('SLACK_API_TOKEN')}, function(err,data){
-            //console.log(err);
+
+            console.log(err);
+            console.log(data);
 
             if (err != null){
                 console.log("check 2");
