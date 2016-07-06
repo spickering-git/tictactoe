@@ -51,7 +51,7 @@ function getTeamUserList(){
 
     //var teamUsersList = {};
 
-    if (checkSlackConnection.authorized) {
+    //if () {
 
         slack.users.list({
             token: config('SLACK_API_TOKEN')
@@ -71,9 +71,9 @@ function getTeamUserList(){
 
             //console.log('!!!!!!!!!!!!!!!!!!!!!!!');
         });
-    }
+    //}
 
-    return teamUsersList;
+    //return teamUsersList;
 }
 
 function checkForUser(payload, opponent){
