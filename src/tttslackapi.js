@@ -26,9 +26,10 @@ function checkForUser(payload, opponent){
 
             //console.log(data);
 
-            channelUsers = data.members;
-
-            //console.log(channelUsers);
+            channelUsers = data;
+            console.log('***********************');
+            console.log(channelUsers);
+            console.log('***********************');
         });
 
         slack.users.list({
@@ -39,13 +40,16 @@ function checkForUser(payload, opponent){
             //console.log(data);
 
             users = data;
-
-            //console.log(users);
+            console.log('!!!!!!!!!!!!!!!!!!!!!!!!');
+            console.log("users " + users);
+            console.log('!!!!!!!!!!!!!!!!!!!!!!!');
         });
 
-        for(var i = 0; i < users.members.length; i++){
-            console.log(users[i].user + " " + opponent);
-        }
+
+
+        //for(var i = 0; i < users.members.length; i++){
+        //    console.log(users[i].user + " " + opponent);
+        //}
     }
 }
 
