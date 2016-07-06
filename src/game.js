@@ -234,6 +234,8 @@ checks current board for a tie
  */
 function checkForTie(currentGame){
 
+	Console.log('currentGame.totalCellsCount ' + currentGame.totalCellsCount + ' currentGame.cellFilledCount ' + currentGame.cellFilledCount);
+
 	if(currentGame.totalCellsCount == currentGame.cellFilledCount){
 		currentGame.gameStatusTypes = gameStatusTypes.TIE;
 	}
@@ -274,13 +276,13 @@ function columnWinner(currentGame){
 	var board = currentGame.board;
 
 	var sumColArray = board[0];
-
+	
 	for(var rowCnt = 1; rowCnt < currentGame.boardSize; rowCnt++){
 		sumColArray = board[rowCnt].map(function(cellVal, idx){
 			return cellVal + sumColArray[idx];
 		});
 	}
-
+	
 	var colCnt = 0;
 
 	while(colCnt < currentGame.boardSize)
