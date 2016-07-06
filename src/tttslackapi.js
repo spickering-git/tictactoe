@@ -16,20 +16,24 @@ slack.auth.test({ token: config('SLACK_API_TOKEN')}, function(err,data){
 function checkSlackAPIauth(){
 
     if (!config('SLACK_API_TOKEN')){
+        console.log("check 1");
         return false;
+
     }
     else {
         slack.auth.test({ token: config('SLACK_API_TOKEN')}, function(err,data){
             console.log(err);
 
             if (err){
+                console.log("check 2");
                 return false;
             }
 
+            console.log("check 3");
             return true;
         });
     }
-
+    console.log("check 4");
     return false;
         
     
