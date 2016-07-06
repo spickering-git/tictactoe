@@ -15,12 +15,9 @@ const config = require('./config')
 
 function checkSlackAPIauth(){
 
-    if (!config('SLACK_API_TOKEN')){
+    if (config('SLACK_API_TOKEN')){
         console.log("check 1");
-        return false;
 
-    }
-    else {
         slack.auth.test({ token: config('SLACK_API_TOKEN')}, function(err,data){
             //console.log(err);
 
@@ -33,7 +30,12 @@ function checkSlackAPIauth(){
             return true;
         });
     }
-    console.log("check 4");
+    else{
+        console.log("check 4");
+        return false;
+    }
+
+    console.log("check 5");
     //return false;
         
     
