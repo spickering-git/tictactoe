@@ -1,7 +1,7 @@
 # tictactoe
-X|O|X\n
-O|X|O\n
-X|O|X
+`X|O|X
+`O|X|O
+`X|O|X
 
 
 ### Supported `/slash` commands
