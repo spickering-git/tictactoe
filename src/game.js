@@ -149,7 +149,7 @@ function mark(payload, currentGame, rowIn, columnIn){
 					currentGame.username2 == payload.user_name){
 
 						return 'Hey! wait your turn, it\'s time for ' + currentGame.currentUser +
-							' to make a take a turn.' +
+							' to take a turn.' +
 							drawCurrentBoard(currentGame);
 
 				}
